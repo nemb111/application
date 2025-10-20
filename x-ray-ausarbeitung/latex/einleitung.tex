@@ -1,0 +1,60 @@
+
+\chapter{Einleitung}
+
+"`Raytracing"' ist ein computergestütztes Verfahren, das versucht die reale Lichtausbreitung, sowie Licht-Objekt-Interaktion möglichst korrekt zu modellieren. In der Realität senden Lichtquellen Strahlen aus, die auf Objekte
+treffen, wodurch gewisse Farbanteile absorbiert und andere reflektiert werden.
+Gelangen diese reflektierte Strahlen auf einen Sensor, wie das menschliche Auge, kann anhand der unterschiedlichen Spektren ein Bild wahrgenommen werden. 
+Beim "`Raytracing"' geht man umgekehrt vor und sendet Strahlen vom Sensor aus in eine virtuelle Szene aus Objekten und Lichtern. Dadurch werden nur die relevanten Strahlen betrachtet, die im realen Fall vom Sensor wahrgenommen worden wären.
+
+ Aktuelle "`Raytracer"' erzeugen bereits heute nahezu fotorealistische Bilder und werden z.B. zur Produktion von Kinofilmen oder Werbespots verwendet. Aufgrund der sehr komplexen Berechnungen eignet sich "`raytracing"' im Gegensatz zur gerasterten Computergrafik eher selten für Echtzeitanwendungen.
+
+
+
+
+\section{Zielsetzung}
+
+
+Ziel des Projekts ist die eigenständige Implementierung eines
+"`Raytracers"'. Die dazu verwendete Programmiersprache ist C++. Sie zeichnet sich besonders durch ihre Performanz aus und ist damit hervorragend zur Bewältigung der großen Anzahl an benötigten Berechnungen geeignet.
+
+ Diese Ausarbeitung folgt dabei chronologisch den einzelnen Entwicklungsschritten. Zu Beginn werden die wichtigsten mathematischen Grundlagen geschaffen, die hauptsächlich in  der linearen Algebra angesiedelt sind. In den folgenden Kapiteln wird dann erläutert wie Strahlen in eine Szene ausgesendet werden, die Definition einfacher Objekte aussieht und Strahl-Objekt Schnitttests funktionieren, die zur Berechnung der  Objekt-Schattierung benötigt werden. Darauf folgt die Einführung von Transformationen. Diese erlauben es die Gestalt von Objekten sowie deren Lage im Raum zu ändern. Im nächsten Schritt wird die Schattierung, d.h. die Oberflächeneigenschaften von Objekten berechnet. In diesem Zusammenhang spielen Rendergleichung, sowie Lichtquellen und Materialien eine wichtige Rolle.
+ 
+ Zu den aufwendigeren Methoden, die der "`Raytracer"'
+ im finalen Zustand beherrschen wird gehört neben der Visualisierung von transparenten Dielektrika wie etwa Glas, die Verwendung von komplexen triangulierten Objekten. Diese können eine enorme Anzahl an Schnitttests erfordern, was die Implementierung einer Beschleunigungsstruktur zur Reduzierung der Schnitttest notwendig macht.
+ 
+ 
+  Als Hauptleitfaden diente das Buch "`Ray Tracing from the Ground Up"' von Kevin Suffern \cite{suffern2007ray}.
+
+
+
+
+
+%\chapter{Lineare Algebra}
+%
+%Grundlegend geht es beim "`Raytracing"' darum Strahlen in eine Szene, bestehend aus Objekten, zu schicken. Trifft ein Strahl ein Objekt, so wird die Beleuchtung am Schnittpunkt des Objekts berechnet.
+%Zur Darstellung von Vektoren, Punkten und Transformationsmatrizen bedient sich die Computergrafik häufig Homogener Koordinaten
+
+
+
+
+%Ziel des Masterprojekts ist der eigenständige Entwurf und Implementierung eines funktionsfähigen Raytracers. Grundlegend wird es darum gehen, Algorithmen und Datenstrukturen zu implementieren, die möglichst physikalisch exakt die Strahldichten $L$ (engl. radiance) der einzelnen Bildpunkte berechnen. 
+%
+%Wie in Abbildung~\ref{fig_Zeitplan} zu sehen ist besteht der erste Milestone darin bis Ende Dezember einen ersten rudimentären Raytracer zu erzeugen. Der Schwerpunkt wird sein, ein Framework zu erzeugen, das erstens leicht um neue Methodiken erweiterbar ist und zweitens in der Lage ist möglichst allgemeine Szenen zu verarbeiten.\\
+%
+%Im zweiten Teil des Projekts wird es dann darum gehen fortgeschrittenere raytracing-Methoden zur realisieren. Dabei gibt es Bereiche die besonders vertieft werden können.
+%Zum Beispiel verschiedene Materialien und die zugehörigen BRDF's Materialien erzeugen, bzw. BTDF für transparente Objekte, die aus Glas oder Eis bestehen könnten. Ein weiterer interessanter Punkt wäre die Geschwindigkeitsoptimierung durch unterschiedliche Sampling-Methoden oder durch Datenstrukturen, die den Schnitttest zwischen Strahl und Objekt beschleunigen. Gerade beim Sampling besteht ein Tradeoff zwischen der Qualität des Bildes und der benötigten Zeit zum erstellen des Bildes.
+ 
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Abbildung%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\begin{figure}[h]
+%	\centering
+%  \includegraphics[width=\textwidth]{images/Zeitplan.pdf}
+%	\caption{Zeitplan}
+%	\label{fig_Zeitplan}
+%\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+

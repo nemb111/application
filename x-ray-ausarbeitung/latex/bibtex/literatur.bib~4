@@ -1,0 +1,94 @@
+@comment{x-kbibtex-encoding=utf-8}
+
+@book{jensen2001ReaImaSynUsiPhoMap,
+	added-at = {2014-09-07T17:49:18.000+0200},
+	address = {Natick, MA, USA},
+	author = {Jensen, Henrik Wann},
+	biburl = {http://www.bibsonomy.org/bibtex/2c7bdd29422df7c917145c9c97496f0e5/c2ba},
+	interhash = {9e781036c55ab8f28ab583602d2d018f},
+	intrahash = {c7bdd29422df7c917145c9c97496f0e5},
+	isbn = {1-56881-147-0},
+	keywords = {imported},
+	publisher = {A. K. Peters, Ltd.},
+	title = {{Realistic Image Synthesis Using Photon Mapping}},
+	x-fetchedfrom = {Bibsonomy},
+	year = 2001
+}
+
+@book{suffern2007ray,
+	abstract = {With the increase in computing speed and due to the high quality of the optical effects it achieves, ray tracing is becoming a popular choice for interactive and animated rendering. This book takes readers through the whole process of building a modern ray tracer from scratch in C++. All concepts and processes are explained in detail with the aid of hundreds of diagrams, ray-traced images, and sample code. It is suitable for undergraduate and graduate computer graphics courses and for individual programmers who would like to learn ray tracing.},
+	author = {Suffern, Kevin},
+	isbn = {9781568812724},
+	lccn = {2007021706},
+	publisher = {Taylor \& Francis},
+	series = {{Ak Peters Series}},
+	title = {{Ray Tracing from the Ground Up}},
+	url = {http://books.google.de/books?id=9jJHAQAAIAAJ},
+	x-fetchedfrom = {ISBNdb.com},
+	year = {2007}
+}
+
+@article{moller1997FasMinStoRayInt,
+	added-at = {2013-05-16T00:00:00.000+0200},
+	author = {Möller, Tomas and Trumbore, Ben},
+	biburl = {http://www.bibsonomy.org/bibtex/2a79b190c49a1a96b6e4e8d67118b6c05/dblp},
+	ee = {http://dx.doi.org/10.1080/10867651.1997.10487468},
+	interhash = {6a8dba24a0a230e002e2eecc41685d52},
+	intrahash = {a79b190c49a1a96b6e4e8d67118b6c05},
+	journal = {J. Graphics, GPU, \& Game Tools},
+	keywords = {dblp},
+	number = 1,
+	pages = {21–28},
+	title = {{Fast, Minimum Storage Ray-Triangle Intersection.}},
+	url = {http://dblp.uni-trier.de/db/journals/jgtools/jgtools2.html#MollerT97},
+	volume = 2,
+	x-fetchedfrom = {Bibsonomy},
+	year = 1997
+}
+
+@book{pharrhumphrey2010Physically,
+	abstract = {Physically Based Rendering, 2nd Edition describes both the mathematical theory behind a modern photorealistic rendering system as well as its practical implementation. A method - known as 'literate programming'- combines human-readable documentation and source code into a single reference that is specifically designed to aid comprehension. The result is a stunning achievement in graphics education. Through the ideas and software in this book, you will learn to design and employ a full-featured rendering system for creating stunning imagery. New sections on subsurface scattering, Metropolis light transport, precomputed light transport, multispectral rendering, and much more.Includes a companion site complete with source code for the rendering system described in the book, with support for Windows, OS X, and Linux. Please visit, www.pbrt.org. Code and text are tightly woven together through a unique indexing feature that lists each function, variable, and method on the page that they are first described.},
+	author = {{Matt Pharr}, Greg Humphreys},
+	publisher = {Morgan Kaufmann},
+	title = {{Physically Based Rendering, Second Edition: From Theory To Implementation}},
+	x-fetchedfrom = {ISBNdb.com},
+	year = {2010}
+}
+
+@book{mobius1827DerBarCal,
+	added-at = {2013-09-29T14:16:50.000+0200},
+	author = {Möbius, August Ferdinand},
+	interhash = {bbce65cb8db8cb5a51ac6b747b2203c9},
+	intrahash = {d9e09cdc2c1a338418645991632df3b5},
+	isbn = {1144890934},
+	keywords = {imported},
+	title = {{Der Barycentrische Calcul : ein neues Hülfsmittel zur analytischen Behandlung der Geometrie}},
+	url = {http://www.bibsonomy.org/bibtex/2d9e09cdc2c1a338418645991632df3b5/guillem.palou},
+	x-fetchedfrom = {Bibsonomy},
+	year = 1827
+}
+
+@article{aransay2014AppGaualgdonrig,
+	added-at = {2014-02-02T00:00:00.000+0100},
+	author = {Aransay, Jesús and Divasón, Jose},
+	biburl = {http://www.bibsonomy.org/bibtex/2bca18faf846a39041496385f0df282b3/dblp},
+	ee = {http://arxiv.org/abs/1401.5910},
+	interhash = {819b8f0384ae8077e15b27a59f275abf},
+	intrahash = {bca18faf846a39041496385f0df282b3},
+	journal = {CoRR},
+	keywords = {dblp},
+	title = {{Applications of the Gauss-Jordan algorithm, done right.}},
+	url = {http://dblp.uni-trier.de/db/journals/corr/corr1401.html#AransayD14},
+	volume = {abs/1401.5910},
+	x-fetchedfrom = {Bibsonomy},
+	year = 2014
+}
+
+@misc{reddy2015obj,
+	author = {Reddy, Martin},
+	howpublished = {url},
+	month = jun,
+	title = {{Spezifikation OBJ-Format}},
+	year = {2015}
+}
+

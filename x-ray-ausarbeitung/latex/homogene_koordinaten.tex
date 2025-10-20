@@ -1,0 +1,146 @@
+
+\chapter{Homogene Koordinaten}\label{cha:hom_koord}
+
+Der erste Schritt auf dem Weg zum funktionsfähigen "`Raytracer"' besteht darin Objekte im dreidimensionalen Raum darstellen zu können. In der Computergrafik haben sich dafür die homogenen Koordinaten etabliert. Wie bei den inhomogenen Koordinaten existieren auch hier Spaltenvektoren. Jedoch bestehen diese aus vier anstatt drei Komponenten. Die vierte Komponente scheint zu Beginn unnütz, da sich die Position von Punkten und Objekten ebenso mit nur drei Komponenten eindeutig beschreiben lässt. Jedoch sorgt diese zusätzliche Komponente dafür, dass sich Transformationen auf eine einheitliche Art und Weise und zwar durch Multiplikation mit einer Transformationsmatrix durchführen lassen.
+
+
+\section{Vektoren, Punkte und Normalen}
+
+Neben der Vereinheitlichung von Transformationen bietet die zusätzliche Komponente, die ab jetzt mit \( w \) bezeichnet wird, den weiteren Vorteil, dass explizit zwischen Punkten und Vektoren unterschieden werden kann.
+
+Nimmt  \( w \) den Wert \( 0 \) an, so handelt es sich um einen Vektor. Vektoren dienen der reinen Richtungsangabe und bleiben z.B. anders als Punkte bei Translationen unverändert. Ein Punkt liegt vor, wenn \( w \) Werte ungleich \( 0 \) annimmt. Sie sind mathematisch gesehen Ortsvektoren und werden durch Translation verschoben. Punkte und Vektoren werden durch einen fett geschriebenen Kleinbuchstaben gekennzeichnet:
+
+
+
+\begin{equation*}
+\text{Punkt:} \quad \boldsymbol{p} = \begin{pmatrix}
+        x \\ y \\ z \\ w \ne 0
+\end{pmatrix}
+\qquad
+\text{Vektor} \quad \boldsymbol{v} = \begin{pmatrix}
+    x \\ y \\ z \\ 0
+\end{pmatrix}
+\end{equation*}
+Die Einträge \(x, y, z\) sind die Komponenten des Vektors oder Punktes und beziehen sich wie gewohnt auf die Koordinatenachsen eines dreidimensionalen kartesischen Koordinatensystems. Die Komponente \(w\) dient als Skalierungsfaktor. Die Länge eines Vektors \( |\boldsymbol{v}| \) und Punktes \( |\boldsymbol{p}| \) ist somit gegeben durch:
+\begin{equation*}
+|\boldsymbol{v}| = \sqrt{x^2+y^2+z^2} \quad \quad \quad \quad
+|\boldsymbol{p}| = \sqrt{\left(\frac{x}{w} \right)^2
+                         + \left(\frac{y}{w}\right)^2 
+                         + \left(\frac{z}{w}\right)^2
+                        }
+\end{equation*}
+
+Wenn die Komponente eines Vektors oder Punktes gemeint ist, wird diese mittels Punkt-Satzzeichen dem fett geschriebenen Kleinbuchstaben angehängt. So ist mit \( \boldsymbol{p}.x \) die x-Komponente des Punktes \( \boldsymbol{p} \) gemeint.
+
+In homogenen Koordinaten existiert ebenfalls ein Standardskalarprodukt sowie ein Kreuzprodukt, dessen Anwendung jedoch nur auf Vektoren sinnvoll ist:
+
+\begin{align}
+   \text{Skalarprodukt: }& \boldsymbol{u} \cdot \boldsymbol{v} = \boldsymbol{u}.x \cdot \boldsymbol{v}.x +  \boldsymbol{u}.y \cdot \boldsymbol{v}.y + \boldsymbol{u}.z \cdot \boldsymbol{v}.z + \boldsymbol{u}.w \cdot \boldsymbol{v}.w = \boldsymbol{u}^\intercal \boldsymbol{v} \label{eq:skalarprodukt} \\
+   \text{Kreuzprodukt: }& \boldsymbol{u} \times \boldsymbol{v} = 
+   \begin{pmatrix}
+   \boldsymbol{u}.y \cdot \boldsymbol{v}.z - \boldsymbol{u}.z \cdot \boldsymbol{v}.y \\
+   \boldsymbol{u}.z \cdot \boldsymbol{v}.x - \boldsymbol{u}.x \cdot \boldsymbol{v}.z \\
+   \boldsymbol{u}.x \cdot \boldsymbol{v}.y - \boldsymbol{u}.y \cdot \boldsymbol{v}.x \\
+   0
+   \end{pmatrix}
+\end{align}
+
+wobei \( \boldsymbol{u}.x, \boldsymbol{v}.x, \dots, \boldsymbol{v}.w \) die Komponenten der Vektoren \( \boldsymbol{u} \text{ und } \boldsymbol{v} \) sind und \( \boldsymbol{u}^\intercal \) der transponierte Vektor von \( \boldsymbol{u} \) ist.
+
+
+Vektoren, die senkrecht auf einer Oberfläche bzw. Tangentialebene eines Objekts stehen, werden in der Computergrafik zur besseren Unterscheidung als Normalen bezeichnet. Sie werden mit dem Buchstaben \( \boldsymbol{n} \) gekennzeichnet und , anders als der Name suggeriert, nicht notwendigerweise normalisiert. Die Transformation von Normalen gestaltet sich ebenfalls anders als die von Vektoren, da Normalen nach einer Transformation weiterhin orthogonal zur Oberfläche ausgerichtet sein sollen.
+
+
+\section{Matrizen}\label{sec:matrizen}
+
+In diesem Abschnitt werden die unterschiedlichen Transformationsmatrizen lediglich definiert. In Kapitel \ref{ch:transformation} wird im Detail gezeigt, wie Transformationen durchzuführen sind.
+
+Matrizen werden beim "`Raytracing"' hauptsächlich dazu verwendet, Objekte zu transformieren. Wegen der Verwendung von homogenen Koordinaten handelt es sich dabei um \( 4 \times 4  \)-Matrizen. Sie werden durch einen fett geschriebenen Großbuchstaben gekennzeichnet.
+
+
+
+Um Objekte entlang eines beliebigen Vektors \( \boldsymbol{a} \) zu verschieben, verwendet man eine Translationsmatrix \( \boldsymbol{T} \),
+
+\begin{equation}
+    \boldsymbol{T}( \boldsymbol{a} ) = 
+    \begin{bmatrix}
+        1 & 0 & 0 & a_x \\
+        0 & 1 & 0 & a_y \\
+        0 & 0 & 1 & a_z \\
+        0 & 0 & 0 & 1
+    \end{bmatrix}
+\end{equation}
+
+wobei \( a_x, a_y, a_z \) die Komponenten des Vektors \( \boldsymbol{a} \) sind. 
+
+Rotation um die Achsen des Koordinatensystems erreicht man durch die Rotationsmatrizen,
+
+\begin{align*}
+    \boldsymbol{R_x}(\theta) &= 
+    \begin{bmatrix}
+        1 & 0 & 0 & 0 \\
+        0 & \cos \theta & - \sin \theta & 0 \\
+        0 & \sin \theta & \cos \theta & 0 \\
+        0 & 0 & 0 & 1
+    \end{bmatrix}, \quad
+    \boldsymbol{R_y}(\theta) = 
+    \begin{bmatrix}
+        \cos \theta & 0 & \sin \theta & 0 \\
+        0 & 1 & 0 & 0 \\
+        - \sin \theta & 0 & \cos \theta & 0 \\
+        0 & 0 & 0 & 1
+    \end{bmatrix}, \\
+    \boldsymbol{R_z}(\theta) &= 
+    \begin{bmatrix}
+        \cos \theta & - \sin \theta & 0 & 0 \\
+        \sin \theta & \cos \theta & 0 & 0 \\
+        0 & 0 & 1 & 0 \\
+        0 & 0 & 0 & 1
+    \end{bmatrix}
+\end{align*}
+
+wobei jeweils um die \( x, y \text{ und } z \) Achse um den Winkel \( \theta \) (im Bogenmaß) im mathematisch positiven Sinn (also gegen den Uhrzeigersinn) gedreht wird.
+
+Soll ein Punkt an den Achsen des zugrunde liegenden Koordinatensystems gespiegelt werden, so verwendet man Reflexionsmatrizen der Form,
+
+\begin{align*}
+    \boldsymbol{S_x} = 
+    \begin{bmatrix}
+        -1 & 0 & 0 & 0 \\
+        0 & 1 & 0 & 0 \\
+        0 & 0 & 1 & 0 \\
+        0 & 0 & 0 & 1 \\        
+    \end{bmatrix}, \quad
+    \boldsymbol{S_y} = 
+    \begin{bmatrix}
+        1 & 0 & 0 & 0 \\
+        0 & -1 & 0 & 0 \\
+        0 & 0 & 1 & 0 \\
+        0 & 0 & 0 & 1
+    \end{bmatrix}, \quad
+    \boldsymbol{S_z} =
+    \begin{bmatrix}
+        1 & 0 & 0 & 0 \\
+        0 & 1 & 0 & 0 \\
+        0 & 0 & -1 & 0 \\
+        0 & 0 & 0 & 1
+    \end{bmatrix}
+\end{align*}
+
+wobei \( \boldsymbol{S_x} \) an der x-Achse und die beiden anderen Matrizen entsprechen an der y-Achse und der z-Achse spiegeln.
+
+Um Objekte entlang der Achsen auszudehnen oder zu kontrahieren verwendet man eine Skalierungsmatrix,
+
+\begin{equation*}
+    \boldsymbol{S}(s_x, s_y, s_z) =
+    \begin{bmatrix}
+        s_x & 0 & 0 & 0 \\
+        0 & s_y & 0 & 0 \\
+        0 & 0 & s_z & 0 \\
+        0 & 0 & 0 & 1
+    \end{bmatrix}
+\end{equation*}
+
+wobei \( s_x, s_y \text{ und } s_z\) Faktoren sind, um die das Objekt entlang der Achsen skaliert wird.
+
+

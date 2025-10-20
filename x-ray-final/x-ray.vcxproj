@@ -1,0 +1,537 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{39670EBD-DE85-475D-9213-2C8D1873BABC}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>raytracer</RootNamespace>
+    <ProjectName>x-ray</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <CLRSupport>false</CLRSupport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+    <CLRSupport>false</CLRSupport>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="fast_stl.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="fast_stl.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="fast_stl.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="fast_stl.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <CustomBuildAfterTargets>
+    </CustomBuildAfterTargets>
+    <CustomBuildBeforeTargets>
+    </CustomBuildBeforeTargets>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <CustomBuildAfterTargets>
+    </CustomBuildAfterTargets>
+    <CustomBuildBeforeTargets>
+    </CustomBuildBeforeTargets>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;WIN64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>$(Platform)\$(Configuration)\$(TargetName).pch</PrecompiledHeaderOutputFile>
+      <AdditionalIncludeDirectories>.\;accelerator\;brdf\;btdf\;camera\;extern\;extern\assimp--3.0.1270-sdk\include;extern\boost_1_57_0\;extern\DevIL\include;extern\flann\include;mapping\;extern\ImageMagick-6.8.6\include;film\;filter\;light\;linAlg;interfaces\;material\;renderer\;renderer\photonrenderer;settings\;sampler\;tools\;shapes\;src\;texture\</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <MinimalRebuild>false</MinimalRebuild>
+      <RuntimeTypeInfo>
+      </RuntimeTypeInfo>
+      <OpenMPSupport>true</OpenMPSupport>
+      <ShowIncludes>false</ShowIncludes>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>$(SolutionDir)..\libraries_win\x64\Debug\linAlg.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <Lib>
+      <TargetMachine>MachineX64</TargetMachine>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <LinkTimeCodeGeneration>false</LinkTimeCodeGeneration>
+    </Lib>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
+    <PreBuildEvent>
+      <Command>
+      </Command>
+    </PreBuildEvent>
+    <CustomBuildStep>
+      <Message>
+      </Message>
+      <Command>
+      </Command>
+      <Outputs>
+      </Outputs>
+      <Inputs>
+      </Inputs>
+    </CustomBuildStep>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;WIN64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>$(Platform)\$(Configuration)\$(TargetName).pch</PrecompiledHeaderOutputFile>
+      <AdditionalIncludeDirectories>.\;accelerator\;brdf\;btdf\;camera\;extern\;extern\assimp--3.0.1270-sdk\include;extern\boost_1_57_0\;extern\DevIL\include;extern\flann\include;mapping\;extern\ImageMagick-6.8.6\include;film\;filter\;light\;linAlg;interfaces\;material\;renderer\;renderer\photonrenderer;settings\;sampler\;tools\;shapes\;src\;texture\</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <CompileAsManaged>false</CompileAsManaged>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <MinimalRebuild>false</MinimalRebuild>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <RuntimeTypeInfo>
+      </RuntimeTypeInfo>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <OpenMPSupport>true</OpenMPSupport>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>$(SolutionDir)..\libraries_win\x64\Release\linAlg.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <Lib>
+      <TargetMachine>MachineX64</TargetMachine>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Lib>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
+    <PreBuildEvent>
+      <Command>
+      </Command>
+    </PreBuildEvent>
+    <CustomBuildStep>
+      <Message>
+      </Message>
+      <Command>
+      </Command>
+      <Outputs>
+      </Outputs>
+      <Inputs>
+      </Inputs>
+    </CustomBuildStep>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="accelerator\aabb.cpp" />
+    <ClCompile Include="accelerator\bih.cpp" />
+    <ClCompile Include="accelerator\bvhwrapper.cpp" />
+    <ClCompile Include="accelerator\noaccel.cpp" />
+    <ClCompile Include="filter\boxedgaussfilter.cpp" />
+    <ClCompile Include="filter\boxfilter2.cpp" />
+    <ClCompile Include="brdf\fresnelreflector.cpp" />
+    <ClCompile Include="btdf\fresneltransmitter.cpp" />
+    <ClCompile Include="filter\boxfilter3.cpp" />
+    <ClCompile Include="filter\gaussfilter.cpp" />
+    <ClCompile Include="light\environmentlight.cpp" />
+    <ClCompile Include="material\dielectric.cpp" />
+    <ClCompile Include="material\assimpmaterial.cpp" />
+    <ClCompile Include="brdf\speculartex.cpp" />
+    <ClCompile Include="mapping\normalmap.cpp" />
+    <ClCompile Include="btdf\perfecttransmitter.cpp" />
+    <ClCompile Include="material\transparent.cpp" />
+    <ClCompile Include="renderer\photonrenderer\kdtree.cpp" />
+    <ClCompile Include="renderer\photonrenderer\photon.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="renderer\photonrenderer\photonpool.cpp" />
+    <ClCompile Include="renderer\photonrenderer\prendfilter.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="renderer\photonrenderer\refprobability.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="tools\mutexedrng.cpp" />
+    <ClCompile Include="renderer\pathtracer.cpp" />
+    <ClCompile Include="renderer\photonrenderer\photonrenderer.cpp" />
+    <ClCompile Include="sampler\viewplanesampler.cpp" />
+    <ClCompile Include="src\sceneloader.cpp" />
+    <ClCompile Include="src\settingloader.cpp" />
+    <ClCompile Include="src\garbagebin.cpp" />
+    <ClCompile Include="material\mattetex.cpp" />
+    <ClCompile Include="texture\imagetex.cpp" />
+    <ClCompile Include="brdf\lambertiantex.cpp" />
+    <ClCompile Include="shapes\assimpmeshtriangle.cpp" />
+    <ClCompile Include="extern\bvh\BBox_NoSSE.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="extern\bvh\BBox.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="extern\bvh\BVH.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="brdf\glossyspecular.cpp" />
+    <ClCompile Include="material\realisticmirror.cpp" />
+    <ClCompile Include="sampler\hemispheres.cpp" />
+    <ClCompile Include="sampler\samplestorage.cpp" />
+    <ClCompile Include="shapes\mesh.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\guicomm.cpp" />
+    <ClCompile Include="light\arealight.cpp" />
+    <ClCompile Include="filter\nofilter.cpp" />
+    <ClCompile Include="shapes\lightshape.cpp" />
+    <ClCompile Include="sampler\midpoints.cpp" />
+    <ClCompile Include="sampler\hammersleys.cpp" />
+    <ClCompile Include="material\emissive.cpp" />
+    <ClCompile Include="sampler\randoms.cpp" />
+    <ClCompile Include="src\settings.cpp" />
+    <ClCompile Include="shapes\disc.cpp" />
+    <ClCompile Include="renderer\accelrenderer.cpp" />
+    <ClCompile Include="filter\boxfilter.cpp" />
+    <ClCompile Include="brdf\perfectspecular.cpp" />
+    <ClCompile Include="material\mirror.cpp" />
+    <ClCompile Include="filter\mitchellfilter.cpp" />
+    <ClCompile Include="material\phong.cpp" />
+    <ClCompile Include="material\debugmaterial.cpp" />
+    <ClCompile Include="brdf\specular.cpp" />
+    <ClCompile Include="shapes\FlatMeshTriangle.cpp" />
+    <ClCompile Include="shapes\smoothmeshtriangle.cpp" />
+    <ClCompile Include="sampler\stratifieds.cpp" />
+    <ClCompile Include="src\texture.cpp" />
+    <ClCompile Include="tools\imageio.cpp" />
+    <ClCompile Include="tools\stringutils.cpp" />
+    <ClCompile Include="src\meshparser.cpp" />
+    <ClCompile Include="tools\obj.cpp" />
+    <ClCompile Include="shapes\meshtriangle.cpp" />
+    <ClCompile Include="shapes\debugsphere.cpp" />
+    <ClCompile Include="light\directional.cpp" />
+    <ClCompile Include="material\matte.cpp" />
+    <ClCompile Include="light\pointlight.cpp" />
+    <ClCompile Include="shapes\plane.cpp" />
+    <ClCompile Include="tools\ppm.cpp" />
+    <ClCompile Include="Renderer\adprenderer.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="light\ambient.cpp" />
+    <ClCompile Include="camera\orthocamera.cpp" />
+    <ClCompile Include="brdf\lambertian.cpp" />
+    <ClCompile Include="camera\pinhole.cpp" />
+    <ClCompile Include="shapes\rect.cpp" />
+    <ClCompile Include="shapes\sphere.cpp" />
+    <ClCompile Include="shapes\instance.cpp" />
+    <ClCompile Include="Film\simplefilm.cpp" />
+    <ClCompile Include="Renderer\simplerenderer.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\scene.cpp" />
+    <ClCompile Include="src\material.cpp" />
+    <ClCompile Include="src\ray.cpp" />
+    <ClCompile Include="src\filter.cpp" />
+    <ClCompile Include="src\renderer.cpp" />
+    <ClCompile Include="src\camera.cpp" />
+    <ClCompile Include="src\accelerator.cpp" />
+    <ClCompile Include="src\film.cpp" />
+    <ClCompile Include="src\light.cpp" />
+    <ClCompile Include="src\shape.cpp" />
+    <ClCompile Include="src\bv.cpp" />
+    <ClCompile Include="shapes\triangle.cpp" />
+    <ClCompile Include="src\unitsampler.cpp" />
+    <ClCompile Include="x-ray.cpp" />
+    <ClCompile Include="src\parser.cpp" />
+    <ClCompile Include="src\options.cpp" />
+    <ClCompile Include="src\world.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="accelerator\aabb.h" />
+    <ClInclude Include="accelerator\bih.h" />
+    <ClInclude Include="accelerator\bvhwrapper.h" />
+    <ClInclude Include="accelerator\noaccel.h" />
+    <ClInclude Include="filter\boxedgaussfilter.h" />
+    <ClInclude Include="filter\boxfilter2.h" />
+    <ClInclude Include="brdf\fresnelreflector.h" />
+    <ClInclude Include="btdf\fresneltransmitter.h" />
+    <ClInclude Include="extern\flann\include\flann\algorithms\all_indices.h" />
+    <ClInclude Include="extern\flann\include\flann\algorithms\autotuned_index.h" />
+    <ClInclude Include="extern\flann\include\flann\algorithms\center_chooser.h" />
+    <ClInclude Include="extern\flann\include\flann\algorithms\composite_index.h" />
+    <ClInclude Include="extern\flann\include\flann\algorithms\dist.h" />
+    <ClInclude Include="extern\flann\include\flann\algorithms\hierarchical_clustering_index.h" />
+    <ClInclude Include="extern\flann\include\flann\algorithms\kdtree_cuda_3d_index.h" />
+    <ClInclude Include="extern\flann\include\flann\algorithms\kdtree_cuda_builder.h" />
+    <ClInclude Include="extern\flann\include\flann\algorithms\kdtree_index.h" />
+    <ClInclude Include="extern\flann\include\flann\algorithms\kdtree_single_index.h" />
+    <ClInclude Include="extern\flann\include\flann\algorithms\kmeans_index.h" />
+    <ClInclude Include="extern\flann\include\flann\algorithms\linear_index.h" />
+    <ClInclude Include="extern\flann\include\flann\algorithms\lsh_index.h" />
+    <ClInclude Include="extern\flann\include\flann\algorithms\nn_index.h" />
+    <ClInclude Include="extern\flann\include\flann\config.h" />
+    <ClInclude Include="extern\flann\include\flann\defines.h" />
+    <ClInclude Include="extern\flann\include\flann\flann.h" />
+    <ClInclude Include="extern\flann\include\flann\flann.hpp" />
+    <ClInclude Include="extern\flann\include\flann\flann_no_warn.hpp" />
+    <ClInclude Include="extern\flann\include\flann\general.h" />
+    <ClInclude Include="extern\flann\include\flann\io\hdf5.h" />
+    <ClInclude Include="extern\flann\include\flann\mpi\client.h" />
+    <ClInclude Include="extern\flann\include\flann\mpi\index.h" />
+    <ClInclude Include="extern\flann\include\flann\mpi\matrix.h" />
+    <ClInclude Include="extern\flann\include\flann\mpi\queries.h" />
+    <ClInclude Include="extern\flann\include\flann\mpi\server.h" />
+    <ClInclude Include="extern\flann\include\flann\nn\ground_truth.h" />
+    <ClInclude Include="extern\flann\include\flann\nn\index_testing.h" />
+    <ClInclude Include="extern\flann\include\flann\nn\simplex_downhill.h" />
+    <ClInclude Include="extern\flann\include\flann\util\allocator.h" />
+    <ClInclude Include="extern\flann\include\flann\util\any.h" />
+    <ClInclude Include="extern\flann\include\flann\util\cuda\heap.h" />
+    <ClInclude Include="extern\flann\include\flann\util\cuda\result_set.h" />
+    <ClInclude Include="extern\flann\include\flann\util\cutil_math.h" />
+    <ClInclude Include="extern\flann\include\flann\util\dynamic_bitset.h" />
+    <ClInclude Include="extern\flann\include\flann\util\heap.h" />
+    <ClInclude Include="extern\flann\include\flann\util\logger.h" />
+    <ClInclude Include="extern\flann\include\flann\util\lsh_table.h" />
+    <ClInclude Include="extern\flann\include\flann\util\matrix.h" />
+    <ClInclude Include="extern\flann\include\flann\util\object_factory.h" />
+    <ClInclude Include="extern\flann\include\flann\util\params.h" />
+    <ClInclude Include="extern\flann\include\flann\util\random.h" />
+    <ClInclude Include="extern\flann\include\flann\util\result_set.h" />
+    <ClInclude Include="extern\flann\include\flann\util\sampling.h" />
+    <ClInclude Include="extern\flann\include\flann\util\saving.h" />
+    <ClInclude Include="extern\flann\include\flann\util\serialization.h" />
+    <ClInclude Include="extern\flann\include\flann\util\timer.h" />
+    <ClInclude Include="filter\boxfilter3.h" />
+    <ClInclude Include="filter\gaussfilter.h" />
+    <ClInclude Include="light\environmentlight.h" />
+    <ClInclude Include="material\dielectric.h" />
+    <ClInclude Include="interfaces\btdf.h" />
+    <ClInclude Include="material\assimpmaterial.h" />
+    <ClInclude Include="brdf\speculartex.h" />
+    <ClInclude Include="mapping\normalmap.h" />
+    <ClInclude Include="btdf\perfecttransmitter.h" />
+    <ClInclude Include="material\transparent.h" />
+    <ClInclude Include="renderer\norenderer.h" />
+    <ClInclude Include="renderer\photonrenderer\kdtree.h" />
+    <ClInclude Include="renderer\photonrenderer\photon.h" />
+    <ClInclude Include="renderer\photonrenderer\photonpool.h" />
+    <ClInclude Include="renderer\photonrenderer\prendfilter.h" />
+    <ClInclude Include="renderer\photonrenderer\refprobability.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="tools\mutexedrng.h" />
+    <ClInclude Include="renderer\pathtracer.h" />
+    <ClInclude Include="renderer\photonrenderer\photonrenderer.h" />
+    <ClInclude Include="plugins\x-ray_includes.h" />
+    <ClInclude Include="sampler\viewplanesampler.h" />
+    <ClInclude Include="src\sceneloader.h" />
+    <ClInclude Include="src\settingloader.h" />
+    <ClInclude Include="src\garbagebin.h" />
+    <ClInclude Include="material\mattetex.h" />
+    <ClInclude Include="texture\imagetex.h" />
+    <ClInclude Include="brdf\lambertiantex.h" />
+    <ClInclude Include="shapes\assimpmeshtriangle.h" />
+    <ClInclude Include="extern\bvh\BBox.h" />
+    <ClInclude Include="extern\bvh\BVH.h" />
+    <ClInclude Include="extern\bvh\IntersectionInfo.h" />
+    <ClInclude Include="extern\bvh\Log.h" />
+    <ClInclude Include="extern\bvh\Object.h" />
+    <ClInclude Include="extern\bvh\Ray.h" />
+    <ClInclude Include="extern\bvh\Sphere.h" />
+    <ClInclude Include="extern\bvh\Stopwatch.h" />
+    <ClInclude Include="extern\bvh\Vector3_NoSSE.h" />
+    <ClInclude Include="extern\bvh\Vector3.h" />
+    <ClInclude Include="material\realisticmirror.h" />
+    <ClInclude Include="brdf\glossyspecular.h" />
+    <ClInclude Include="sampler\hemispheres.h" />
+    <ClInclude Include="sampler\samplestorage.h" />
+    <ClInclude Include="shapes\mesh.h" />
+    <ClInclude Include="src\guicomm.h" />
+    <ClInclude Include="light\arealight.h" />
+    <ClInclude Include="filter\nofilter.h" />
+    <ClInclude Include="shapes\lightshape.h" />
+    <ClInclude Include="sampler\midpoints.h" />
+    <ClInclude Include="sampler\hammersleys.h" />
+    <ClInclude Include="material\emissive.h" />
+    <ClInclude Include="sampler\randoms.h" />
+    <ClInclude Include="interfaces\settings.h" />
+    <ClInclude Include="shapes\disc.h" />
+    <ClInclude Include="renderer\accelrenderer.h" />
+    <ClInclude Include="filter\boxfilter.h" />
+    <ClInclude Include="brdf\perfectspecular.h" />
+    <ClInclude Include="material\mirror.h" />
+    <ClInclude Include="filter\mitchellfilter.h" />
+    <ClInclude Include="material\phong.h" />
+    <ClInclude Include="shapes\flatmeshtriangle.h" />
+    <ClInclude Include="material\debugmaterial.h" />
+    <ClInclude Include="brdf\specular.h" />
+    <ClInclude Include="shapes\smoothmeshtriangle.h" />
+    <ClInclude Include="sampler\stratifieds.h" />
+    <ClInclude Include="interfaces\texture.h" />
+    <ClInclude Include="tools\displayinfo.h" />
+    <ClInclude Include="tools\imageio.h" />
+    <ClInclude Include="tools\progressbar.h" />
+    <ClInclude Include="tools\Stopwatch.h" />
+    <ClInclude Include="tools\stringutils.h" />
+    <ClInclude Include="interfaces\meshparser.h" />
+    <ClInclude Include="tools\obj.h" />
+    <ClInclude Include="shapes\meshtriangle.h" />
+    <ClInclude Include="shapes\debugsphere.h" />
+    <ClInclude Include="light\directional.h" />
+    <ClInclude Include="material\matte.h" />
+    <ClInclude Include="light\pointlight.h" />
+    <ClInclude Include="shapes\plane.h" />
+    <ClInclude Include="tools\ppm.h" />
+    <ClInclude Include="Renderer\adprenderer.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="light\ambient.h" />
+    <ClInclude Include="interfaces\brdf.h" />
+    <ClInclude Include="brdf\lambertian.h" />
+    <ClInclude Include="camera\pinhole.h" />
+    <ClInclude Include="shapes\rect.h" />
+    <ClInclude Include="shapes\sphere.h" />
+    <ClInclude Include="src\constants.h" />
+    <ClInclude Include="shapes\instance.h" />
+    <ClInclude Include="interfaces\film.h" />
+    <ClInclude Include="interfaces\filter.h" />
+    <ClInclude Include="interfaces\camera.h" />
+    <ClInclude Include="interfaces\accelerator.h" />
+    <ClInclude Include="interfaces\bv.h" />
+    <ClInclude Include="interfaces\material.h" />
+    <ClInclude Include="shapes\triangle.h" />
+    <ClInclude Include="interfaces\unitsampler.h" />
+    <ClInclude Include="x-ray.h" />
+    <ClInclude Include="interfaces\renderer.h" />
+    <ClInclude Include="interfaces\shape.h" />
+    <ClInclude Include="interfaces\light.h" />
+    <ClInclude Include="interfaces\spectrum.h" />
+    <ClInclude Include="camera\orthocamera.h" />
+    <ClInclude Include="Film\simplefilm.h" />
+    <ClInclude Include="Renderer\simplerenderer.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="interfaces\scene.h" />
+    <ClInclude Include="src\ray.h" />
+    <ClInclude Include="src\parser.h" />
+    <ClInclude Include="src\options.h" />
+    <ClInclude Include="src\world.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="src\garbagebin.inl" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

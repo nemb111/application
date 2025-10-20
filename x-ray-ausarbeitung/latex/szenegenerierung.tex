@@ -1,0 +1,7 @@
+\section{Szenegenerierung- und Darstellung}
+
+Bevor der eigentliche Render-Vorgang beginnen kann muss man eine Szene erzeugen und diese in eine, für den Raytracer verwendbare interne Repräsentation bringen. Dabei kann die Beschreibung einer Szene sehr komplex werden. Einerseits durch die geometrische Darstellung der Objekte(Objekte mit mehreren Tausend "`vertices"') aber auch durch ihre Eigenschaften. Gegeben z.B. durch Normalenvektoren, Materialeigenschaften, Texturkoordinaten, Art der Lichtquelle, Sichtfeld der Kamera usw.\\
+
+
+Um die Möglichkeit offen zu halten später eine eigene "`scene description language"' zu definieren und zu verwenden wird der Raytracer um eine einfache Parser-Klasse erweitert, die dies gewährleisten soll. Für den Anfang reicht es die einzelnen Instanzen der benötigten Objekte direkt im Code zu erzeugen. Jedoch wäre es im späteren Verlauf des Projekts denkbar auch komplexere triangulierte Objekte zu verwenden, die sich eben nicht mehr so einfach per Code beschreiben lassen. Ein Ausweg aus dieser Problematik könnte z.B das von "`Wavefront"' entwickelte "`obj."'-Dateiformat bieten. Da es von vielen 3D-Modellierungsprogrammen 
+unterstützt wird können dort Objekte modelliert werden und dann auf einfache Art und Weise dem Raytracer zur Verfügung gestellt werden. 

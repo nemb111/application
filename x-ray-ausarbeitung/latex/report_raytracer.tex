@@ -1,0 +1,164 @@
+\documentclass[10pt,a4paper,parskip=half]{scrreprt}
+%\documentclass[10pt,a4paper, draft]{scrreprt}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{dsfont}
+\usepackage[framemethod=tikz]{mdframed} % sollte nach amsmath geladen werden
+\usepackage{esvect}
+\usepackage{geometry}
+\usepackage{graphicx}
+%\renewcommand*\includegraphics[2][]{} % einkommentieren um alle Bilder auszublenden
+\usepackage{wrapfig} % Um Bilder einzubinden, die vom Text umflossen sind
+\usepackage{placeins} % float barrier
+\usepackage[german, intoc, refpage]{nomencl}
+\usepackage{listings}
+\usepackage{todonotes}
+\usepackage{abraces} % Benutzerdef. Klammern
+\usepackage{algorithmicx}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+\usepackage{blindtext} % dient zum generieren von Blindtext für Testzwecke
+\usepackage{hyperref} %das muss zu letzt geladen werden
+
+
+
+\geometry{a4paper,left=35mm,right=35mm} % Einstellen der Seitenränder
+
+\pagestyle{headings}
+
+\setlength{\parindent}{1em} % Setzt den Wert für Einzug bei einem neuen Absatz
+
+\floatname{algorithm}{Algorithmus} % ändert algorithm in Algorithmus ab.
+\addto\captionsngerman{ % Zum Ändern automatisch generierter Bezeichner wie "Abbildung" in figure-Umgebung
+    \renewcommand{\figurename}{Abb.}
+  %  \renewcommand{\tablename}{Tab.}
+}
+
+
+\mdfdefinestyle{mystyle}{
+    linecolor=gray!20,linewidth=3pt,
+    frametitlerule=true,
+    frametitlebackgroundcolor=gray!20,
+    roundcorner=1pt,
+    innertopmargin=\topskip,
+}
+\newmdenv[style=mystyle, frametitle=Quelldateien]{quell}
+
+
+% --- Abkürzungsverzeichnis: ----------------------------
+% START % Näheres siehe http://my.opera.com/timomeinen/blog/show.dml/68644
+% Befehl umbenennen in abk
+\let\abk\nomenclature
+% Deutsche Überschrift
+\renewcommand{\nomname}{Abkürzungsverzeichnis}
+% Punkte zw. Abkürzung und Erklärung
+\setlength{\nomlabelwidth}{.20\hsize}
+\renewcommand{\nomlabel}[1]{#1 \dotfill}
+% Zeilenabstände verkleinern
+\setlength{\nomitemsep}{-\parsep}
+\makenomenclature
+
+
+
+%% Hier beginnt das eigentliche Dokument
+\begin{document}
+
+\begin{titlepage}
+
+\title{Implementation of a raytracer
+\begin{center}
+   \includegraphics[scale=0.33]{./titelbild.png}
+\end{center}
+      }
+\subtitle{Masterprojekt WS 12/13}
+\author{Benedikt Mendorf}
+\date{\today}
+
+\publishers{
+    \begin{tabbing}
+    Betreuer: \= Prof. Dr.-Ing. Matthias Teschner\\
+              \> Computer Graphics\\
+              \> Albert-Ludwigs-Universität\\
+    \end{tabbing}        
+}
+
+\end{titlepage}
+
+\maketitle
+\tableofcontents
+\printnomenclature
+
+
+
+\include{einleitung}
+\include{homogene_koordinaten}
+\include{strahlverfolgung}
+\include{objekte_und_schnitttests}
+\include{transformation}
+\include{schattierung}
+\include{triangulierte_objekte}
+\include{beschleunigungsstrukturen}
+\include{texturierung}
+\include{bildkorrektur}
+\include{galerie}
+
+%\include{zielsetzung.tex}
+%\include{szenegenerierung.tex}
+%\include{programmablauf}
+%\include{linalg}
+%\include{homogenekoord}
+%\include{rayobjektschnitte}
+%\include{sampling}
+%%\include{filter}
+%\include{accelerator}
+%\include{renderingequation}
+%%\include{brdfandmaterial}
+%%\include{arealights}
+%%\include{transparency}
+
+
+%\begin{quell}
+%    Nummer 1
+%\end{quell}
+%\begin{quell}
+%    Nummer 2
+%\end{quell}
+%\begin{quell}
+%    Nummer 3
+%\end{quell}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Abbildung%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\begin{figure}[h]
+%	\centering
+%  \includegraphics[width=\textwidth]{images/bunny.pdf}
+%	\caption{Vereinfachtes Modell des Stanford Bunny. Gerendert mit Flat-Shading}
+%	\label{fig_bunny}
+%\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Abbildung%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\begin{figure}[h]
+%	\centering
+%  \includegraphics[width=\textwidth]{images/scene2.pdf}
+%	\caption{Zwei Punktlichter beleuchten die Szene. Die Kugel besitzt ein Material, welches
+%	das Phong-Beleuchtungsmodell benutzt.}
+%	\label{fig_ADPRender}
+%\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\bibliographystyle{alphadin}
+\bibliography{./bibtex/literatur}
+\listoffigures
+
+
+\end{document}
+
+
+
+
+
+

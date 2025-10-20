@@ -1,0 +1,226 @@
+\section{Ray-Objekt Schnitte}
+
+In diesem Kapitel werden Schnitttests mit unterschiedlichen Objekten vorgestellt. Die allgemeine
+Vorgehensweise besteht darin, für Objekte eine Oberfläche in implizierter Form zu definieren.
+
+\begin{equation}
+    f(x, y, z) = f(\mathbf{p}) = 0
+    \label{lb_surface}
+\end{equation}
+
+In dieser Form lässt sich prüfen ob ein Punkt auf der Oberfläche liegt, indem er in die Funktion eingesetzt wird
+und diese "0" ergeben muss. Ist das Ergebnis von "0" verschieden so befindet sich der Punkt oberhalb oder unterhalb der Oberfläche.
+
+Durch die parametrische Darstellung eines Rays $\mathbf{r}$ (Strahls) lassen sich alle Punkte entlang des Strahls
+durch die geeignete Wahl das Parameter $\mathit{t}$ berechnen. 
+
+Sei $\mathbf{o}$ ein Stützpunkt in homogenen Koordinaten auf dem Strahl und $\mathbf{d}$ ein Richtungsvektor
+in homogenen Koordinaten, dann ist $\mathbf{r}$ definiert durch:
+\begin{equation}
+    \mathbf{r} = \mathbf{o} + \mathit{t} \cdot \mathbf{d}
+    \label{eq_ray}
+\end{equation}
+
+
+Man setzt nun Gleichung~\ref{eq_ray} in Gleichung~\ref{lb_surface} ein und löst nach $\mathit{t}$ auf.
+
+\begin{equation}
+    f(\mathbf{o} + \mathit{t} \cdot \mathbf{d}) = 0
+\end{equation}
+
+Falls der Ray die Oberfläche schneidet lassen sich konkrete Werte für $\mathit{t}$ berechnen. Dabei
+ist man am kleinsten Wert für $\mathit{t}$ interessiert, da man den Schnittpunkt mit der am nächsten zum
+Betrachter zugewandten Oberflächenseite berechnen will. Der exakte
+Schnittpunkt mit der Oberfläche ergibt sich dann durch einsetzen des für $\mathit{t}$ ermittelten Wertes
+in Gleichung~\ref{eq_ray}.
+
+
+\subsection{Ray-Ebenen Schnitt}
+
+Die implizite Form einer Ebene lautet:
+\begin{equation}
+    f(\mathbf{p}) = (\mathbf{p} - \mathbf{x}) \cdot \mathbf{n} = 0
+\end{equation}
+
+Wobei $\mathbf{x}$ ein Punkt ist der in der Ebene liegt und $\mathbf{n}$ ist ein Normalenvektor, der senkrecht
+auf der Ebene steht. Die Gleichung lässt sich nun wie folgt umformen:
+
+
+\begin{equation*}
+    \mathbf{p} \cdot \mathbf{n} = \mathbf{x} \cdot \mathbf{n}
+\end{equation*}
+
+Einsetzen von Gleichung~\ref{eq_ray} liefert:
+
+\begin{align*}
+    \mathbf{o} \cdot \mathbf{n} + \mathit{t} \cdot \mathbf{d} \cdot \mathbf{n} &= \mathbf{x} \cdot \mathbf{n}\\
+    \mathit{t} \cdot \mathbf{d} \cdot \mathbf{n} &= \mathbf{x} \cdot \mathbf{n} - \mathbf{o} \cdot \mathbf{n}\\
+    \mathit{t} &= \dfrac{(\mathbf{x}  - \mathbf{o}) \cdot \mathbf{n}}{\mathbf{d} \cdot \mathbf{n}}
+\end{align*}
+
+Damit besitzt $\mathit{t}$ eine eindeutige Lösung. Jedoch sollte der Fall, wenn $\mathbf{d}$ und $\mathbf{n}$
+senkrecht aufeinander stehen in der Implementierung gesondert behandelt werden, da dies zu einer Division durch
+"0" führt.
+
+
+\subsection{Ray-Rechteck Schnitt}
+
+Um ein Rechteck darzustellen reicht es aus einen Eckpunkt $\mathbf{c}$ (hier linke untere Ecke) festzulegen,
+sowie zwei aufeinander senkrecht stehende Vektoren $\mathbf{w}$ und $\mathbf{h}$, die die Breite bzw. Höhe
+des Rechtecks festlegen. Durch das Kreuzprodukt $\mathbf{w} \times \mathbf{h} = \mathbf{n}$  wird die Normale 
+$\mathbf{n}$ berechnet. Diese wird später für die Beleuchtung gebraucht, spielt aber auch ein tragende Rolle
+beim Ray-Rechteck Schnitttest.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Abbildung%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[h]
+	\centering
+  \includegraphics[width=\textwidth]{images/Ray-Rectangle.pdf}
+	\caption{Ein Ray schneidet das Rechteck im Punkt $\mathbf{p}$}
+	\label{fig_Ray-Rectangle}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Im ersten Schritt muss nämlich der Schnittpunkt $\mathbf{p}$ (siehe Abbildung~\ref{fig_Ray-Rectangle}) 
+berechnet werden. Dies geschieht durch einen Ray-Ebenen Schnitttest, wobei die Ebene gegeben ist durch
+den Stützpunkt $\mathbf{c}$ und der Normalen $\mathbf{n}$. Anschließend wird der Vektor $\mathbf{d} = 
+\mathbf{p} - \mathbf{c}$ auf die Vektoren $\mathbf{w}$ und $\mathbf{h}$ projiziert, wobei 
+$\mathbf{\|w\|}$ und $\mathbf{\|h\|}$ die Einheitsvektoren von $\mathbf{w}$ und $\mathbf{h}$ sind:
+
+\begin{align*}
+    \mathbf{dw}& = \mathbf{d} \cdot \mathbf{\|w\|}\\
+    \mathbf{dh}& = \mathbf{d} \cdot \mathbf{\|h\|}\\
+\end{align*}
+
+Nun müssen vier Fälle geprüft werden. Werden alle dieser Fälle wahr ist, so hat der Ray das Rechteck geschnitten
+und der Schnittpunkt kann mit Hilfe von $\mathit{t}$ berechnet werden. Wenn nur einer der Test fehlschlägt, dann
+liegt kein Schnitt vor. Die Tests sind:
+
+\begin{enumerate}
+\centering
+\item $\mathbf{|dw|} \geq 0$
+\item $\mathbf{|dh|} \geq 0$
+\item $\mathbf{|dw|} \leq \mathbf{|w|}$
+\item $\mathbf{|dh|} \leq \mathbf{|h|}$
+\end{enumerate}
+
+
+
+\subsection{Ray-Kugel Schnitt}
+
+Alle Punkte, die auf der Oberfläche einer Kugel liegen erfüllen die implizite Form:
+
+\begin{equation}
+    (\mathbf{p} - \mathbf{c})^{2} - \mathit{r}^2 = 0
+    \label{eq_sphere}
+\end{equation}
+
+Wobei der Punkt $\mathbf{c}$ den Mittelpunkt der Kugel und $\mathit{r}$ den Radius der Kugel
+angibt. $\mathbf{p}$ ist ein Punkt der beliebig gewählt werden kann. Jedoch besitzt die
+Gleichung~\ref{eq_sphere} nur dann eine Lösung wenn $\mathbf{p}$ auf der Kugeloberfläche liegt.
+Ziel ist es also für $\mathbf{p}$ die parametrische Ray Darstellung aus Gleichung~\ref{eq_ray}
+einzusetzen und nach dem Parameter $\mathit{t}$ aufzulösen. Nur wenn der Ray die Kugel schneidet
+oder tangiert gibt es eine Lösung für $\mathit{t}$.
+
+Bevor Gleichung~\ref{eq_ray} für $\mathbf{p}$ eingesetzt wird erfolgt noch ein Umformungsschritt:
+\begin{equation*}
+    (\mathbf{p}^2 - 2\mathbf{pc} + \mathbf{c}^2) - \mathit{r}^2 = 0
+\end{equation*}
+
+Einsetzen von Gleichung~\ref{eq_ray} liefert:
+
+\begin{align*}
+    &(\mathbf{o} + \mathit{t} \cdot \mathbf{d})^2 - 2 \cdot (\mathbf{o} + \mathit{t} \cdot 
+      \mathbf{d}) \cdot \mathbf{c} + \mathbf{c}^2 - \mathit{r}^2 = 0\\
+    &(\mathbf{o}^2 + 2\mathbf{od}\mathit{t} + (\mathit{t}\mathbf{d})^2) - 
+     (2\mathbf{oc} + 2\mathbf{cd}\mathit{t}) + \mathbf{c}^2 - \mathit{r}^2 = 0\\
+    &\mathbf{d}^2\mathit{t}^2 - 2\mathbf{cd}\mathit{t} + 2\mathbf{do}\mathit{t} + \mathbf{o}^2 -
+     2\mathbf{oc} + \mathbf{c}^2 - \mathit{r}^2 = 0\\
+    &\mathbf{d}^2\mathit{t}^2 + 2\mathit{t}\mathbf{d} \cdot (\mathbf{o} - \mathbf{c}) +
+     (\mathbf{o} - \mathbf{c})^2 - \mathit{r}^2 = 0
+\end{align*}
+
+In der letzten Zeile liegt die Gleichung in Form einer quadratischen Gleichung vor, die bekanntlich
+mit Hilfe der Mitternachtsformel gelöst werden kann.
+
+\begin{equation*}
+   t = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a} 
+\end{equation*}
+
+Die Parameter $\mathit{a, b, c}$ sind dabei wie folgt zu belegen:
+
+\begin{align*}
+    a &= \mathbf{d}^2\\
+    b &= 2\mathbf{d} \cdot (\mathbf{o} - \mathbf{c})\\
+    c &= (\mathbf{o} - \mathbf{c})^2 - \mathit{r}^2
+\end{align*}
+
+Für die Implementierung ist es sinnvoll zuerst die Diskriminante zu berechnen und
+auf negative Ergebnisse zu prüfen. So kann frühzeitig festgestellt werden, dass
+ein Strahl die Kugel nicht schneidet.
+
+\subsection{Ray-Dreieck Schnitt}
+
+Eines der wichtigsten geometrischen Objekte in der Computergrafik ist das Dreieck.
+"`Kurvige"' Oberflächen lassen sich zwar gut durch "`NURBS"' darstellen,
+jedoch lassen sich, damit Schnitttests nicht in Echtzeit durchführen. Aus diesem Grund
+werden die meisten Oberflächen trianguliert als "`triangle meshes"' gespeichert.\\
+
+Für den Ray-Dreieck Schnittest werden Baryzentrische Koordinaten verwendet, diese
+beschreiben die relative Lage eines Punktes $\mathbf{p}(\mathit{\alpha, \beta})$ anhand 
+der Parameter $\mathit{\alpha, \beta}$ und drei Punkten $\mathbf{p_1, p_2, p_3}$ die das
+Dreieck aufspannen.
+
+$\mathit{\alpha, \beta}$ kann nun durch: 
+
+\begin{equation}
+    \mathbf{p}(\mathit{\alpha, \beta}) = (1 - \alpha - \beta)\mathbf{p_1} + \alpha\mathbf{p_2} + \beta\mathbf{p_3}
+    \label{eq_tri}
+\end{equation}
+
+Der Punkt $\mathbf{p}(\mathit{\alpha, \beta})$ liegt innerhalb des Dreiecks
+wenn folgende Bedingungen erfüllt sind:
+
+
+\begin{enumerate}
+\centering
+\item $\mathit{\alpha} \geq 0$
+\item $\mathit{\beta} \geq 0$
+\item $\mathit{\alpha} + \mathit{\beta} \leq 1$
+\end{enumerate}
+
+Gesucht sind nun die Werte für $\mathit{t}$, $\mathit{\alpha}$ und $\mathit{\beta}$.
+Dazu setzt man die parametrische Ray Darstellung~\ref{eq_ray} in Gleichung~\ref{eq_tri} ein:
+
+\begin{align*}
+    \mathbf{o} + \mathit{t}\mathbf{d} &= (1 - \alpha - \beta)\mathbf{p_1} + \mathit{\alpha}\mathbf{p_2}
+                                          + \mathit{\beta}\mathbf{p_3}\\
+    \mathbf{o} + \mathit{t}\mathbf{d} &= \mathbf{p_1} - \mathbf{p_1}\mathit{\alpha} - 
+    \mathbf{p_1}\mathit{\beta} + \mathbf{p_2}\mathit{\alpha} + \mathbf{p_3}\mathit{\beta}\\
+    \mathbf{o} + \mathit{t}\mathbf{d} &= \mathbf{p_1} + \mathit{\alpha}(\mathbf{p_2 - p_1})
+    + \mathbf{\beta}(\mathbf{p_3 - p_1})\\
+    \mathbf{o - p_1} &= \mathit{\alpha}(\mathbf{p_2 - p_1}) + \mathbf{\beta}(\mathbf{p_3 - p_1})
+    - \mathit{t}\mathbf{d}
+\end{align*}
+
+
+Nun folgenden Substitutionen $\mathbf{s = o - p_1}$, $\mathbf{e_1 = p_2 - p_1}$ und 
+$\mathbf{e_2 = p_3 - p_1}$ erhält man das Gleichungssystem
+
+\begin{equation*}
+    \mathbf{s} = \begin{pmatrix} \mathbf{-d} && \mathbf{e_1} && \mathbf{e_2} \end{pmatrix} \cdot
+    \begin{pmatrix} \mathit{t} \\ \mathit{\alpha} \\ \mathit{\beta} \end{pmatrix}
+\end{equation*}
+
+welches man mit Hilfe der Cramerschen Regel lösen kann.
+Als Lösung ergibt sich folgender Ausdruck:
+
+\begin{equation}
+    \begin{pmatrix} \mathit{t} \\ \mathit{\alpha} \\ \mathit{\beta} \end{pmatrix} =
+    \frac{1}{(\mathbf{d \times e_2}) \cdot \mathbf{e_1}} \cdot
+    \begin{pmatrix}
+        (\mathbf{s \times e_1}) \cdot \mathbf{e_2}\\
+        (\mathbf{d \times e_2}) \cdot \mathbf{s}\\
+        (\mathbf{s \times e_1}) \cdot \mathbf{d}
+    \end{pmatrix}
+    \label{eq_tri_result}
+\end{equation}

@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ImportGroup Label="PropertySheets" />
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <OutDir>$(SolutionDir)bin\$(Platform)\$(Configuration)\</OutDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>./..;$(SolutionDir)accelerator;$(SolutionDir)..\..\accelerator;$(SolutionDir)light;$(SolutionDir)..\..\light;$(SolutionDir)brdf;$(SolutionDir)..\..\brdf;$(SolutionDir)btdf;$(SolutionDir)..\..btdf;$(SolutionDir)extern;$(SolutionDir)..\..\extern;$(SolutionDir)extern\assimp--3.0.1270-sdk\include;$(SolutionDir)..\..\extern\assimp--3.0.1270-sdk\include;$(SolutionDir)extern\Devil\include;$(SolutionDir)..\..\extern\Devil\include;$(SolutionDir)extern\flann\include;$(SolutionDir)..\..\extern\flann\include;$(SolutionDir)mapping;$(SolutionDir)..\..\mapping;$(SolutionDir)plugins;$(SolutionDir)..\..\plugins;$(SolutionDir)shapes;$(SolutionDir)..\..\shapes;$(SolutionDir)scenes;$(SolutionDir)..\..\scenes;$(SolutionDir)Sampler;$(SolutionDir)..\..\Sampler;$(SolutionDir)settings;$(SolutionDir)..\..\settings;$(SolutionDir)texture;$(SolutionDir)..\..\texture;$(SolutionDir)tools;$(SolutionDir)..\..\tools;$(SolutionDir)Renderer;$(SolutionDir)..\..\Renderer;$(SolutionDir)Renderer/photonrenderer;$(SolutionDir)..\..\Renderer/photonrenderer;$(SolutionDir)Film;$(SolutionDir)..\..\Film;$(SolutionDir)filter;$(SolutionDir)..\..\filter;$(SolutionDir)camera;$(SolutionDir)..\..\camera;$(SolutionDir)material;$(SolutionDir)..\..\material;$(SolutionDir)interfaces;$(SolutionDir)..\..\interfaces;$(SolutionDir)src;$(SolutionDir)..\..\src;$(SolutionDir);$(SolutionDir)..\..;$(SolutionDir)linAlg;$(SolutionDir)..\..\linAlg</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <MinimalRebuild>false</MinimalRebuild>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>$(SolutionDir)extern\assimp--3.0.1270-sdk\lib\assimp_release-dll_x64\assimp.lib;$(SolutionDir)extern\DevIL\unicode\DevIl.lib;$(SolutionDir)extern\flann\lib\flann.lib;$(SolutionDir)$(Platform)\$(Configuration)\x-ray.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup />
+</Project>

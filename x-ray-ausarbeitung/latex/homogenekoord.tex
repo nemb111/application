@@ -1,0 +1,127 @@
+\section{Homogene Koordinaten}
+
+Homogene Koordinaten bieten eine alternative Möglichkeit Punkte und Vektoren im kartesischen Koordinatensystem darzustellen. Im Rahmen des Raytracers spielt dabei vor allem die Darstellung von Punkten
+und Vektoren im dreidimensionalen Raum eine wichtige Rolle, weshalb sich nachfolgend alle Erläuterungen auf Elemente des dreidimensionalen Raums beziehen.
+
+In der gängigen Darstellungsweise wird ein Vektor $\mathbf{a}$ durch 3 Komponenten dargestellt
+\begin{equation*}
+\textbf{a} = \begin{pmatrix}x \\ y\\ z\end{pmatrix}
+\end{equation*}
+
+und eine Matrix \textbf{M} besitzt insgesamt 9 Einträge der Form:
+\begin{equation*}
+\textbf{M} = \begin{pmatrix}
+    m_{11} & m_{12} & m_{13}\\
+    m_{21} & m_{22} & m_{23}\\
+    m_{31} & m_{32} & m_{33}
+\end{pmatrix}
+\end{equation*}
+
+Auf einen Vektor lässt sich nun eine Reihe von Transformationen anwenden, wie z.B. Rotation oder Translation.
+Diese beiden Transformationsarten werden verdeutlichen weshalb man überhaupt homogene Koordinaten verwendet.
+Während sich Die Rotation des Vektors $\mathbf{a}$ durch die Multiplikation mit einer Rotationsmatrix $\mathbf{R_x(\phi)}$ (dabei handelt es sich um eine spezielle Rotationsmatrix, die nur um die x-Achse rotiert) bewerkstelligen lässt
+
+
+\begin{align*}
+    \mathbf{R_x(\phi)}& = \begin{pmatrix}
+                         1 & 0 & 0 \\
+                         0 & \cos \phi & -\sin \phi \\
+                         0 & \sin \phi & \cos \phi
+                         \end{pmatrix}\\        
+    \mathbf{a_{rot}}& = \mathbf{R_x(\phi)} \cdot \mathbf{a}
+\end{align*}
+
+
+muss für die Translation die komponentenweise Addition mit einem Verschiebungsvektor $\mathbf{t}$ durchgeführt werden
+
+\begin{align*}
+    \mathbf{a_{trans}} = \mathbf{a} + \mathbf{t} = \begin{pmatrix} a_x + t_x \\ a_y + t_y \\ a_z + t_z
+                                                   \end{pmatrix}
+\end{align*}
+
+Durch Verwendung von homogenen Koordinaten entfällt diese gesonderte Behandlung unterschiedlicher
+Transformationen und es werden zwei neue Objekte eingeführt, nämlich Punkte und Vektoren. In der
+bisher beschriebenen Darstellungsform kann nämlich nicht unterschieden werden ob ein kartesischer Vektor nun
+zur Repräsentation eines Punktes eines geometrischen Objekts verwendet wird, oder aber als Vektor im eigentlichen
+Sinn, das heißt als richtungsangebendes Objekt. Diese Information ist jedoch wichtig, da Punkte verschoben werden, Vektoren(als richtungsangebendes Objekt) allerdings unbeeinflusst bleiben.\\
+
+Nun zur Darstellung in homogenen Koordinaten. Ein homogener Vektor $\mathbf{b}$ besitzt 4 Komponenten.
+\begin{equation*}
+    \mathbf{b} = \begin{pmatrix} x \\ y \\ z \\ w   \end{pmatrix}
+\end{equation*}
+
+ Wie man sieht wurde ein kartesischer Vektor lediglich um die Komponente $w$ erweitert. 
+\begin{align*}
+    \mathbf{p}& = \begin{pmatrix} x \\ y \\ z \\ 1  \end{pmatrix} \text{entspricht einem Punkt}\\
+    \mathbf{v}& = \begin{pmatrix} x \\ y \\ z \\ 0  \end{pmatrix} \text{entspricht einem Vektor}\\
+\end{align*}
+
+Diese Komponente 
+ermöglicht einerseits die Unterscheidung zwischen Punkt Und Vektor und dient im Falle des Punktes als
+Skalierungsfaktor. Das heißt ein Punkt in homogenen Koordinaten lässt sich durch einen kartesischen Vektor
+$\mathbf{c}$ der Form
+\begin{equation*}
+   \mathbf{c} = \begin{pmatrix} x/w \\ y/w \\ z/w   \end{pmatrix}
+\end{equation*}
+beschreiben.\\
+
+Auch die homogenen Matrizen müssen natürlich um eine Dimension erweitert werden und besitzen nun 16 Einträge.
+Sei $\mathbf{N}$ eine homogene Matrix:
+
+\begin{equation*}
+    \mathbf{N} = \begin{pmatrix}
+        r_{11} & r_{12} & r_{13} & t_{14}\\
+        r_{21} & r_{22} & r_{23} & t_{24}\\
+        r_{31} & r_{32} & r_{33} & t_{34}\\
+        p_{41} & p_{42} & p_{43} & w\\
+    \end{pmatrix}
+\end{equation*}
+
+Dabei spielen vor allem die Komponenten mit dem Suffix $r$ und $t$ eine wichtige Rolle. Spezielle 
+Transformationsmatrizen zum Rotieren, Skalieren, Spiegeln und Scheren benutzen die $r$ Komponenten wohingegen
+Translationsmatrizen die $t$ Komponenten verwenden.
+
+Am nachfolgenden Beispiel sollen die beiden angesprochenen Vorteile von homogenen Koordinaten nochmals verdeutlicht werden. Dazu soll der Punkt $\mathbf{p} = \begin{pmatrix} 1 \\ 2 \\ -1 \\ 1 \end{pmatrix}$ und der 
+Vektor $\mathbf{v} = \begin{pmatrix} 1 \\ 2 \\ -1 \\ 0 \end{pmatrix}$ um den kartesischen Vektor
+$\mathbf{s} = \begin{pmatrix} 3 \\ -1 \\ -1 \end{pmatrix}$ verschoben werden. Dazu wird Die Translationsmatrix
+$\mathbf{T}$ erzeugt und mit $\mathbf{p,v}$ multipliziert.
+
+\begin{align*}
+    \mathbf{T}& = \begin{pmatrix}
+        1 & 0 & 0 & 3\\
+        0 & 1 & 0 & -1\\
+        0 & 0 & 1 & -1\\
+        0 & 0 & 0 & 1
+    \end{pmatrix}\\
+    \mathbf{p_{trans}}& = \mathbf{T} \cdot \mathbf{p} = \begin{pmatrix} 4 \\ 1 \\ -2 \\ 1  \end{pmatrix}\\
+    \mathbf{v_{trans}}& = \mathbf{T} \cdot \mathbf{v} = \begin{pmatrix} 1 \\ 2 \\ -1 \\ 0  \end{pmatrix}
+\end{align*}
+
+Zwei Dinge werden deutlich: Erstens lässt sich nun die Translation einheitlich wie die anderen Transformationen
+durch eine Matrixmultiplikation durchführen. Und zweitens bleibt, wie bereits erwähnt, der Vektor als rein 
+richtungsangebendes Objekt von der Translation verschont.\\
+
+
+Weiterhin sind auch noch Addition und Subtraktion zwischen homogenen Vektoren erlaubt jedoch nicht in beliebiger
+Kombination, da die die Addition zweier Punkte beispielsweise zu keinem vernünftig interpretierbaren Ergebnis führen würde. Dies ist aus Tabelle~\ref{tab_Operationen} zu entnehmen
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{|c c|}
+\hline 
+Operation & Ergebnis \\ 
+\hline 
+Vektor + Vektor  & Vektor \\ 
+\hline 
+Vektor - Vektor & Vektor \\ 
+\hline 
+Punkt - Punkt & Vektor \\ 
+\hline 
+Punkt + Vektor & Punkt \\ 
+\hline 
+Punkt - Vektor & Punkt \\ 
+\hline 
+\end{tabular} 
+\caption{Erlaubte Additions- und Subtraktionsoperationen, sowie das entsprechende Ergebnis}
+    \label{tab_Operationen}
+\end{table}

@@ -1,0 +1,23 @@
+\chapter{Strahlverfolgung}\label{ch:strahlerzeugung}
+
+Die rudimentäre Funktionsweise eines "`Raytracers"' besteht darin Strahlen in eine Szene auszusenden und zu überprüfen ob diese auf ein Objekt treffen. In einem späteren Schritt wird die Beleuchtung des Objekts am Strahl-Objekt Schnittpunkt berechnet und diese Information wird entlang des Strahls auf eine Bildebene projiziert. Diese Vorgehensweise ist vergleichbar mit den Prinzipien der Fotografie, bei der von Objekten ausgesandte Lichtstrahlen auf einem Sensor oder Film fokussiert werden.
+
+Ziel dieses Kapitels ist es die mathematische Darstellung eines Strahls anhand der Strahlgleichung einzuführen und konkrete Methoden der Strahlverfolgung mithilfe eines orthogonalen und perspektivischen Kameramodells zu zeigen.
+
+
+
+\section{Strahlgleichung}
+
+Ein Strahl $\vv{r}$ besitzt die folgende parametrisierte Form:
+\begin{equation}
+\label{eq:Strahlgleichung}
+\boldsymbol{r} = \boldsymbol{o} + t \cdot \vv{d}
+\end{equation}
+wobei Vektor $\boldsymbol{o}$ der Ortsvektor, $\vv{d}$ ein Richtungsvektor ist und Parameter $t$ Einfluss auf die Länge des Strahls nimmt.
+
+\begin{quell}
+    \begin{itemize}
+        \item ./src/ray.h
+    \end{itemize}
+    
+\end{quell}

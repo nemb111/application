@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1">
+  <asset>
+    <contributor>
+      <author>nb</author>
+      <authoring_tool>OpenCOLLADA for 3ds Max;  Version: 1.4.1;  Revision: exported;  Platform: x64;  Configuration: Release_Max2013_static</authoring_tool>
+      <source_data>file:///D:/workspace/x-ray/files/cornellbox/cornellbox_spheres.max</source_data>
+    </contributor>
+    <created>2014-10-01T17:06:43</created>
+    <modified>2014-10-01T17:06:43</modified>
+    <unit name="inch" meter="0.0254"/>
+    <up_axis>Z_UP</up_axis>
+  </asset>
+  <library_effects>
+    <effect id="left_wall__74">
+      <profile_COMMON>
+        <technique sid="common">
+          <phong>
+            <emission>
+              <color>0 0 0 1</color>
+            </emission>
+            <ambient>
+              <color>0.03921569 0 0 1</color>
+            </ambient>
+            <diffuse>
+              <color>0.5019608 0 0 1</color>
+            </diffuse>
+            <specular>
+              <color>0 0 0 1</color>
+            </specular>
+            <shininess>
+              <float>1</float>
+            </shininess>
+            <reflective>
+              <color>0 0 0 1</color>
+            </reflective>
+            <transparent opaque="A_ONE">
+              <color>1 1 1 1</color>
+            </transparent>
+            <transparency>
+              <float>1</float>
+            </transparency>
+          </phong>
+        </technique>
+      </profile_COMMON>
+      <extra>
+        <technique profile="OpenCOLLADA3dsMax">
+          <extended_shader>
+            <apply_reflection_dimming>0</apply_reflection_dimming>
+            <dim_level>0</dim_level>
+            <falloff_type>0</falloff_type>
+            <index_of_refraction>1.5</index_of_refraction>
+            <opacity_type>0</opacity_type>
+            <reflection_level>3</reflection_level>
+            <wire_size>1</wire_size>
+            <wire_units>0</wire_units>
+          </extended_shader>
+          <shader>
+            <ambient_diffuse_lock>0</ambient_diffuse_lock>
+            <ambient_diffuse_texture_lock>1</ambient_diffuse_texture_lock>
+            <diffuse_specular_lock>0</diffuse_specular_lock>
+            <soften>0.1</soften>
+            <use_self_illum_color>0</use_self_illum_color>
+          </shader>
+        </technique>
+      </extra>
+    </effect>
+    <effect id="right_wall__73">
+      <profile_COMMON>
+        <technique sid="common">
+          <phong>
+            <emission>
+              <color>0 0 0 1</color>
+            </emission>
+            <ambient>
+              <color>0 0.03921569 0 1</color>
+            </ambient>
+            <diffuse>
+              <color>0 0.5 0 1</color>
+            </diffuse>
+            <specular>
+              <color>0 0 0 1</color>
+            </specular>
+            <shininess>
+              <float>1</float>
+            </shininess>
+            <reflective>
+              <color>0 0 0 1</color>
+            </reflective>
+            <transparent opaque="A_ONE">
+              <color>1 1 1 1</color>
+            </transparent>
+            <transparency>
+              <float>1</float>
+            </transparency>
+          </phong>
+        </technique>
+      </profile_COMMON>
+      <extra>
+        <technique profile="OpenCOLLADA3dsMax">
+          <extended_shader>
+            <apply_reflection_dimming>0</apply_reflection_dimming>
+            <dim_level>0</dim_level>
+            <falloff_type>0</falloff_type>
+            <index_of_refraction>1.5</index_of_refraction>
+            <opacity_type>0</opacity_type>
+            <reflection_level>3</reflection_level>
+            <wire_size>1</wire_size>
+            <wire_units>0</wire_units>
+          </extended_shader>
+          <shader>
+            <ambient_diffuse_lock>0</ambient_diffuse_lock>
+            <ambient_diffuse_texture_lock>1</ambient_diffuse_texture_lock>
+            <diffuse_specular_lock>0</diffuse_specular_lock>
+            <soften>0.1</soften>
+            <use_self_illum_color>0</use_self_illum_color>
+          </shader>
+        </technique>
+      </extra>
+    </effect>
+    <effect id="floor_back_ceiling__72">
+      <profile_COMMON>
+        <technique sid="common">
+          <phong>
+            <emission>
+              <color>0 0 0 1</color>
+            </emission>
+            <ambient>
+              <color>0.03921569 0.03921569 0.03921569 1</color>
+            </ambient>
+            <diffuse>
+              <color>0.8627452 0.8627452 0.8627452 1</color>
+            </diffuse>
+            <specular>
+              <color>0 0 0 1</color>
+            </specular>
+            <shininess>
+              <float>1</float>
+            </shininess>
+            <reflective>
+              <color>0 0 0 1</color>
+            </reflective>
+            <transparent opaque="A_ONE">
+              <color>1 1 1 1</color>
+            </transparent>
+            <transparency>
+              <float>1</float>
+            </transparency>
+          </phong>
+        </technique>
+      </profile_COMMON>
+      <extra>
+        <technique profile="OpenCOLLADA3dsMax">
+          <extended_shader>
+            <apply_reflection_dimming>0</apply_reflection_dimming>
+            <dim_level>0</dim_level>
+            <falloff_type>0</falloff_type>
+            <index_of_refraction>1.5</index_of_refraction>
+            <opacity_type>0</opacity_type>
+            <reflection_level>3</reflection_level>
+            <wire_size>1</wire_size>
+            <wire_units>0</wire_units>
+          </extended_shader>
+          <shader>
+            <ambient_diffuse_lock>0</ambient_diffuse_lock>
+            <ambient_diffuse_texture_lock>1</ambient_diffuse_texture_lock>
+            <diffuse_specular_lock>0</diffuse_specular_lock>
+            <soften>0.1</soften>
+            <use_self_illum_color>0</use_self_illum_color>
+          </shader>
+        </technique>
+      </extra>
+    </effect>
+  </library_effects>
+  <library_materials>
+    <material id="left_wall__74-material" name="left_wall__74">
+      <instance_effect url="#left_wall__74"/>
+    </material>
+    <material id="right_wall__73-material" name="right_wall__73">
+      <instance_effect url="#right_wall__73"/>
+    </material>
+    <material id="floor_back_ceiling__72-material" name="floor_back_ceiling__72">
+      <instance_effect url="#floor_back_ceiling__72"/>
+    </material>
+  </library_materials>
+  <library_geometries>
+    <geometry id="geom-object4" name="object4">
+      <mesh>
+        <source id="geom-object4-positions">
+          <float_array id="geom-object4-positions-array" count="12">553.5199 2.3758e-5 543.5201 553.5193 6.14009e-5 1963.888 553.52 1393.952 543.5201 553.5193 1393.952 1963.888</float_array>
+          <technique_common>
+            <accessor source="#geom-object4-positions-array" count="4" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="geom-object4-normals">
+          <float_array id="geom-object4-normals-array" count="12">-0.9999576 0.008746019 -0.00286112 -0.9999576 0.008746019 -0.00286112 -0.9999576 0.008746019 -0.00286112 -0.9999576 0.008746019 -0.00286112</float_array>
+          <technique_common>
+            <accessor source="#geom-object4-normals-array" count="4" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="geom-object4-vertices">
+          <input semantic="POSITION" source="#geom-object4-positions"/>
+        </vertices>
+        <triangles material="left_wall__74_1" count="2">
+          <input semantic="VERTEX" source="#geom-object4-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#geom-object4-normals" offset="1"/>
+          <p>0 0 1 1 3 2 3 2 2 3 0 0</p>
+        </triangles>
+      </mesh>
+    </geometry>
+    <geometry id="geom-object3" name="object3">
+      <mesh>
+        <source id="geom-object3-positions">
+          <float_array id="geom-object3-positions-array" count="12">-850.5922 2.3758e-5 543.5197 -842.4648 6.14008e-5 1963.888 -858.7208 1393.952 1963.888 -858.7202 1393.952 543.5196</float_array>
+          <technique_common>
+            <accessor source="#geom-object3-positions-array" count="4" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="geom-object3-normals">
+          <float_array id="geom-object3-normals-array" count="12">1 0 0 1 0 0 1 0 0 1 0 0</float_array>
+          <technique_common>
+            <accessor source="#geom-object3-normals-array" count="4" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="geom-object3-vertices">
+          <input semantic="POSITION" source="#geom-object3-positions"/>
+        </vertices>
+        <triangles material="right_wall__73_1" count="2">
+          <input semantic="VERTEX" source="#geom-object3-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#geom-object3-normals" offset="1"/>
+          <p>3 0 2 1 1 2 1 2 0 3 3 0</p>
+        </triangles>
+      </mesh>
+    </geometry>
+    <geometry id="geom-object2" name="object2">
+      <mesh>
+        <source id="geom-object2-positions">
+          <float_array id="geom-object2-positions-array" count="48">553.5199 2.3758e-5 543.5201 -850.5923 2.3758e-5 543.5197 -842.4648 6.14008e-5 1963.888 553.5193 6.14009e-5 1963.888 553.52 1393.953 543.5201 553.5192 1393.952 1963.889 -858.7209 1393.952 1963.888 -858.7202 1393.952 543.5195 12.49957 1393.953 1120.1 12.49949 1393.953 1386.8 -317.7005 1393.953 1386.8 -317.7004 1393.953 1120.1 12.49954 1580.634 1120.1 12.49947 1580.634 1386.8 -317.7006 1580.634 1386.8 -317.7004 1580.634 1120.1</float_array>
+          <technique_common>
+            <accessor source="#geom-object2-positions-array" count="16" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="geom-object2-normals">
+          <float_array id="geom-object2-normals-array" count="120">-2.69292e-14 1 -2.65022e-8 -2.69292e-14 1 -2.65022e-8 -2.69292e-14 1 -2.65022e-8 -2.69292e-14 1 -2.65022e-8 2.17344e-7 -1.3009e-7 -1 2.17344e-7 -1.3009e-7 -1 2.17344e-7 -1.3009e-7 -1 2.17344e-7 -1.3009e-7 -1 -1.0153e-6 -1 -7.2357e-8 -1.0153e-6 -1 -7.2357e-8 -1.0153e-6 -1 -7.2357e-8 -1.0153e-6 -1 -7.2357e-8 1.40115e-7 -1 -1.26917e-6 1.40115e-7 -0.9999999 -1.26917e-6 1.40115e-7 -1 -1.26917e-6 1.40115e-7 -1 -1.26917e-6 1.12808e-6 -1 -1.44712e-7 1.12808e-6 -0.9999999 -1.44712e-7 1.12808e-6 -1 -1.44712e-7 1.12808e-6 -1 -1.44712e-7 7.00569e-8 -1 7.41001e-7 7.00569e-8 -1 7.41001e-7 7.00569e-8 -0.9999999 7.41001e-7 7.00569e-8 -1 7.41e-7 -1 -1.37932e-7 -3.07521e-7 -1 -1.37932e-7 -3.07522e-7 -0.9999999 -1.37932e-7 -3.07522e-7 -1 -1.37932e-7 -3.07522e-7 0 0 -1 0 0 -1 0 0 -0.9999999 0 0 -1 1 2.45212e-7 5.1492e-7 1 2.45212e-7 5.1492e-7 1 2.45212e-7 5.1492e-7 1 2.45212e-7 5.1492e-7 -1.84843e-7 -3.26949e-7 1 -1.84843e-7 -3.26949e-7 1 -1.84843e-7 -3.26949e-7 0.9999999 -1.84843e-7 -3.26949e-7 1</float_array>
+          <technique_common>
+            <accessor source="#geom-object2-normals-array" count="40" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="geom-object2-vertices">
+          <input semantic="POSITION" source="#geom-object2-positions"/>
+        </vertices>
+        <triangles material="floor_back_ceiling__72_1" count="20">
+          <input semantic="VERTEX" source="#geom-object2-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#geom-object2-normals" offset="1"/>
+          <p>0 0 1 1 2 2 2 2 3 3 0 0 6 4 5 5 3 6 3 6 2 7 6 4 4 8 5 9 9 10 9 10 8 11 4 8 5 12 6 13 10 14 10 14 9 15 5 12 6 16 7 17 11 18 11 18 10 19 6 16 7 20 4 21 8 22 8 22 11 23 7 20 8 24 9 25 13 26 13 26 12 27 8 24 9 28 10 29 14 30 14 30 13 31 9 28 10 32 11 33 15 34 15 34 14 35 10 32 11 36 8 37 12 38 12 38 15 39 11 36</p>
+        </triangles>
+      </mesh>
+    </geometry>
+  </library_geometries>
+  <library_cameras>
+    <camera id="Camera001-camera" name="_000000040CE8358">
+      <optics>
+        <technique_common>
+          <perspective>
+            <xfov>54.43222</xfov>
+            <znear>393.7008</znear>
+            <zfar>157480.3</zfar>
+          </perspective>
+        </technique_common>
+      </optics>
+    </camera>
+  </library_cameras>
+  <library_lights>
+    <light id="EnvironmentAmbientLight" name="EnvironmentAmbientLight">
+      <technique_common>
+        <ambient>
+          <color>0 0 0</color>
+        </ambient>
+      </technique_common>
+    </light>
+  </library_lights>
+  <library_visual_scenes>
+    <visual_scene id="MaxScene">
+      <node name="EnvironmentAmbientLight">
+        <instance_light url="#EnvironmentAmbientLight"/>
+      </node>
+      <node id="node-object4" name="object4">
+        <translate>217.9213 -213.9842 0</translate>
+        <rotate>-1.37679e-7 0.7071068 0.7071068 -180</rotate>
+        <scale>0.3937008 0.3937008 0.3937008</scale>
+        <instance_geometry url="#geom-object4">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="left_wall__74_1" target="#left_wall__74-material">
+                <bind_vertex_input semantic="CHANNEL1" input_semantic="TEXCOORD" input_set="0"/>
+              </instance_material>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+        <extra>
+          <technique profile="OpenCOLLADA">
+            <cast_shadows>1</cast_shadows>
+            <primary_visibility>1</primary_visibility>
+            <receive_shadows>1</receive_shadows>
+            <secondary_visibility>1</secondary_visibility>
+          </technique>
+        </extra>
+      </node>
+      <node id="node-object3" name="object3">
+        <translate>217.9213 -213.9842 0</translate>
+        <rotate>-1.37679e-7 0.7071068 0.7071068 -180</rotate>
+        <scale>0.3937008 0.3937008 0.3937008</scale>
+        <instance_geometry url="#geom-object3">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="right_wall__73_1" target="#right_wall__73-material">
+                <bind_vertex_input semantic="CHANNEL1" input_semantic="TEXCOORD" input_set="0"/>
+              </instance_material>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+        <extra>
+          <technique profile="OpenCOLLADA">
+            <cast_shadows>1</cast_shadows>
+            <primary_visibility>1</primary_visibility>
+            <receive_shadows>1</receive_shadows>
+            <secondary_visibility>1</secondary_visibility>
+          </technique>
+        </extra>
+      </node>
+      <node id="node-object2" name="object2">
+        <translate>217.9213 -213.9842 0</translate>
+        <rotate>-1.37679e-7 0.7071068 0.7071068 -180</rotate>
+        <scale>0.3937008 0.3937008 0.3937008</scale>
+        <instance_geometry url="#geom-object2">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="floor_back_ceiling__72_1" target="#floor_back_ceiling__72-material">
+                <bind_vertex_input semantic="CHANNEL1" input_semantic="TEXCOORD" input_set="0"/>
+              </instance_material>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+        <extra>
+          <technique profile="OpenCOLLADA">
+            <cast_shadows>1</cast_shadows>
+            <primary_visibility>1</primary_visibility>
+            <receive_shadows>1</receive_shadows>
+            <secondary_visibility>1</secondary_visibility>
+          </technique>
+        </extra>
+      </node>
+      <node id="node-Camera001" name="Camera001">
+        <translate>278 -800 273</translate>
+        <rotate>-1 -2.98023e-8 2.98023e-8 -89.99998</rotate>
+        <instance_camera url="#Camera001-camera"/>
+        <extra>
+          <technique profile="OpenCOLLADA">
+            <cast_shadows>1</cast_shadows>
+            <primary_visibility>1</primary_visibility>
+            <receive_shadows>1</receive_shadows>
+            <secondary_visibility>1</secondary_visibility>
+          </technique>
+        </extra>
+      </node>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_visual_scene url="#MaxScene"/>
+  </scene>
+</COLLADA>

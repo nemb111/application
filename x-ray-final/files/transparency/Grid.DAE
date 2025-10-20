@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1">
+  <asset>
+    <contributor>
+      <author>nb</author>
+      <authoring_tool>OpenCOLLADA for 3ds Max;  Version: 1.4.1;  Revision: exported;  Platform: x64;  Configuration: Release_Max2013_static</authoring_tool>
+      <source_data>file:///D:/workspace/x-ray/files/transparency/brickwall_horse.max</source_data>
+    </contributor>
+    <created>2013-12-18T15:42:04</created>
+    <modified>2013-12-18T15:42:04</modified>
+    <unit name="inch" meter="0.0254"/>
+    <up_axis>Z_UP</up_axis>
+  </asset>
+  <library_effects>
+    <effect id="_4_-_Default">
+      <profile_COMMON>
+        <newparam sid="Grid_Ambient_jpg-surface">
+          <surface type="2D">
+            <init_from>Grid_Ambient_jpg</init_from>
+          </surface>
+        </newparam>
+        <newparam sid="Grid_Ambient_jpg-sampler">
+          <sampler2D>
+            <source>Grid_Ambient_jpg-surface</source>
+          </sampler2D>
+        </newparam>
+        <newparam sid="Grid_Diffuse_jpg-surface">
+          <surface type="2D">
+            <init_from>Grid_Diffuse_jpg</init_from>
+          </surface>
+        </newparam>
+        <newparam sid="Grid_Diffuse_jpg-sampler">
+          <sampler2D>
+            <source>Grid_Diffuse_jpg-surface</source>
+          </sampler2D>
+        </newparam>
+        <technique sid="common">
+          <blinn>
+            <emission>
+              <color>0 0 0 1</color>
+            </emission>
+            <ambient>
+              <texture texture="Grid_Ambient_jpg-sampler" texcoord="CHANNEL1"/>
+            </ambient>
+            <diffuse>
+              <texture texture="Grid_Diffuse_jpg-sampler" texcoord="CHANNEL1"/>
+            </diffuse>
+            <specular>
+              <color>0 0 0 1</color>
+            </specular>
+            <shininess>
+              <float>0</float>
+            </shininess>
+            <reflective>
+              <color>0 0 0 1</color>
+            </reflective>
+            <transparent opaque="A_ONE">
+              <color>1 1 1 1</color>
+            </transparent>
+            <transparency>
+              <float>1</float>
+            </transparency>
+          </blinn>
+        </technique>
+      </profile_COMMON>
+      <extra>
+        <technique profile="OpenCOLLADA3dsMax">
+          <extended_shader>
+            <apply_reflection_dimming>0</apply_reflection_dimming>
+            <dim_level>0</dim_level>
+            <falloff_type>0</falloff_type>
+            <index_of_refraction>1.5</index_of_refraction>
+            <opacity_type>0</opacity_type>
+            <reflection_level>3</reflection_level>
+            <wire_size>1</wire_size>
+            <wire_units>0</wire_units>
+          </extended_shader>
+          <shader>
+            <ambient_diffuse_lock>0</ambient_diffuse_lock>
+            <ambient_diffuse_texture_lock>0</ambient_diffuse_texture_lock>
+            <diffuse_specular_lock>0</diffuse_specular_lock>
+            <soften>0.1</soften>
+            <use_self_illum_color>0</use_self_illum_color>
+          </shader>
+        </technique>
+      </extra>
+    </effect>
+    <effect id="ColorEffectR255G229B0">
+      <profile_COMMON>
+        <technique sid="common">
+          <phong>
+            <ambient>
+              <color>1 0.8980392 0 1</color>
+            </ambient>
+            <diffuse>
+              <color>1 0.8980392 0 1</color>
+            </diffuse>
+            <specular>
+              <color>1 1 1 1</color>
+            </specular>
+            <shininess>
+              <float>10</float>
+            </shininess>
+            <reflective>
+              <color>0 0 0 1</color>
+            </reflective>
+            <transparent>
+              <color>1 1 1 1</color>
+            </transparent>
+            <transparency>
+              <float>1</float>
+            </transparency>
+          </phong>
+        </technique>
+      </profile_COMMON>
+      <extra>
+        <technique profile="OpenCOLLADA3dsMax">
+          <extended_shader>
+            <apply_reflection_dimming>0</apply_reflection_dimming>
+            <dim_level>0</dim_level>
+            <falloff_type>0</falloff_type>
+            <index_of_refraction>1.5</index_of_refraction>
+            <opacity_type>0</opacity_type>
+            <reflection_level>3</reflection_level>
+            <wire_size>1</wire_size>
+            <wire_units>0</wire_units>
+          </extended_shader>
+          <shader>
+            <ambient_diffuse_lock>0</ambient_diffuse_lock>
+            <ambient_diffuse_texture_lock>0</ambient_diffuse_texture_lock>
+            <diffuse_specular_lock>0</diffuse_specular_lock>
+            <soften>0.1</soften>
+            <use_self_illum_color>0</use_self_illum_color>
+          </shader>
+        </technique>
+      </extra>
+    </effect>
+    <effect id="ColorEffectR87G120B204">
+      <profile_COMMON>
+        <technique sid="common">
+          <phong>
+            <ambient>
+              <color>0.3411765 0.4705882 0.8 1</color>
+            </ambient>
+            <diffuse>
+              <color>0.3411765 0.4705882 0.8 1</color>
+            </diffuse>
+            <specular>
+              <color>1 1 1 1</color>
+            </specular>
+            <shininess>
+              <float>10</float>
+            </shininess>
+            <reflective>
+              <color>0 0 0 1</color>
+            </reflective>
+            <transparent>
+              <color>1 1 1 1</color>
+            </transparent>
+            <transparency>
+              <float>1</float>
+            </transparency>
+          </phong>
+        </technique>
+      </profile_COMMON>
+      <extra>
+        <technique profile="OpenCOLLADA3dsMax">
+          <extended_shader>
+            <apply_reflection_dimming>0</apply_reflection_dimming>
+            <dim_level>0</dim_level>
+            <falloff_type>0</falloff_type>
+            <index_of_refraction>1.5</index_of_refraction>
+            <opacity_type>0</opacity_type>
+            <reflection_level>3</reflection_level>
+            <wire_size>1</wire_size>
+            <wire_units>0</wire_units>
+          </extended_shader>
+          <shader>
+            <ambient_diffuse_lock>0</ambient_diffuse_lock>
+            <ambient_diffuse_texture_lock>0</ambient_diffuse_texture_lock>
+            <diffuse_specular_lock>0</diffuse_specular_lock>
+            <soften>0.1</soften>
+            <use_self_illum_color>0</use_self_illum_color>
+          </shader>
+        </technique>
+      </extra>
+    </effect>
+  </library_effects>
+  <library_materials>
+    <material id="ColorEffectR255G229B0-material" name="ColorEffectR255G229B0-material">
+      <instance_effect url="#ColorEffectR255G229B0"/>
+    </material>
+    <material id="ColorEffectR87G120B204-material" name="ColorEffectR87G120B204-material">
+      <instance_effect url="#ColorEffectR87G120B204"/>
+    </material>
+    <material id="_4_-_Default-material" name="_4_-_Default">
+      <instance_effect url="#_4_-_Default"/>
+    </material>
+  </library_materials>
+  <library_geometries>
+    <geometry id="geom-Plane001" name="Plane001">
+      <mesh>
+        <source id="geom-Plane001-positions">
+          <float_array id="geom-Plane001-positions-array" count="75">-65 -65 0 -32.5 -65 0 0 -65 0 32.5 -65 0 65 -65 0 -65 -32.5 0 -32.5 -32.5 0 0 -32.5 0 32.5 -32.5 0 65 -32.5 0 -65 0 0 -32.5 0 0 0 0 0 32.5 0 0 65 0 0 -65 32.5 0 -32.5 32.5 0 0 32.5 0 32.5 32.5 0 65 32.5 0 -65 65 0 -32.5 65 0 0 65 0 32.5 65 0 65 65 0</float_array>
+          <technique_common>
+            <accessor source="#geom-Plane001-positions-array" count="25" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="geom-Plane001-normals">
+          <float_array id="geom-Plane001-normals-array" count="75">0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1</float_array>
+          <technique_common>
+            <accessor source="#geom-Plane001-normals-array" count="25" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="geom-Plane001-map1">
+          <float_array id="geom-Plane001-map1-array" count="105">0 0 0 0.25 0 0 0.5 0 0 0.75 0 0 1 0 0 0 0 0 0.25 0 0 0.5 0 0 0.75 0 0 1 0 0 0 0 0 0.25 0 0 0.5 0 0 0.75 0 0 1 0 0 0 0.25 0 0.25 0.25 0 0.5 0.25 0 0.75 0.25 0 1 0.25 0 0 0.5 0 0.25 0.5 0 0.5 0.5 0 0.75 0.5 0 1 0.5 0 0 0.75 0 0.25 0.75 0 0.5 0.75 0 0.75 0.75 0 1 0.75 0 0 1 0 0.25 1 0 0.5 1 0 0.75 1 0 1 1 0</float_array>
+          <technique_common>
+            <accessor source="#geom-Plane001-map1-array" count="35" stride="3">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+              <param name="P" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="geom-Plane001-vertices">
+          <input semantic="POSITION" source="#geom-Plane001-positions"/>
+        </vertices>
+        <triangles material="_4_-_Default_1" count="32">
+          <input semantic="VERTEX" source="#geom-Plane001-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#geom-Plane001-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#geom-Plane001-map1" offset="2" set="0"/>
+          <p>5 0 15 0 1 10 6 2 16 1 3 11 6 2 16 0 1 10 6 2 16 1 3 11 7 4 17 2 5 12 7 4 17 1 3 11 7 4 17 2 5 12 8 6 18 3 7 13 8 6 18 2 5 12 8 6 18 3 7 13 9 8 19 4 9 14 9 8 19 3 7 13 10 10 20 5 0 15 11 11 21 6 2 16 11 11 21 5 0 15 11 11 21 6 2 16 12 12 22 7 4 17 12 12 22 6 2 16 12 12 22 7 4 17 13 13 23 8 6 18 13 13 23 7 4 17 13 13 23 8 6 18 14 14 24 9 8 19 14 14 24 8 6 18 15 15 25 10 10 20 16 16 26 11 11 21 16 16 26 10 10 20 16 16 26 11 11 21 17 17 27 12 12 22 17 17 27 11 11 21 17 17 27 12 12 22 18 18 28 13 13 23 18 18 28 12 12 22 18 18 28 13 13 23 19 19 29 14 14 24 19 19 29 13 13 23 20 20 30 15 15 25 21 21 31 16 16 26 21 21 31 15 15 25 21 21 31 16 16 26 22 22 32 17 17 27 22 22 32 16 16 26 22 22 32 17 17 27 23 23 33 18 18 28 23 23 33 17 17 27 23 23 33 18 18 28 24 24 34 19 19 29 24 24 34 18 18 28</p>
+        </triangles>
+      </mesh>
+      <extra>
+        <technique profile="OpenCOLLADA3dsMax">
+          <max_plane>
+            <density>1</density>
+            <generateuvs>1</generateuvs>
+            <lenght>130</lenght>
+            <lenghtsegments>4</lenghtsegments>
+            <scale>1</scale>
+            <width>130</width>
+            <widthsegments>4</widthsegments>
+          </max_plane>
+        </technique>
+      </extra>
+    </geometry>
+  </library_geometries>
+  <library_cameras>
+    <camera id="Camera001-camera" name="_00000003642A318">
+      <optics>
+        <technique_common>
+          <perspective>
+            <xfov>45</xfov>
+            <znear>1</znear>
+            <zfar>1000</zfar>
+          </perspective>
+        </technique_common>
+      </optics>
+      <extra>
+        <technique profile="OpenCOLLADA3dsMax">
+          <target>#Camera001.Target</target>
+        </technique>
+      </extra>
+    </camera>
+  </library_cameras>
+  <library_lights>
+    <light id="EnvironmentAmbientLight" name="EnvironmentAmbientLight">
+      <technique_common>
+        <ambient>
+          <color>0 0 0</color>
+        </ambient>
+      </technique_common>
+    </light>
+    <light id="Direct001-light" name="Direct001">
+      <technique_common>
+        <directional>
+          <color>1 1 1</color>
+        </directional>
+      </technique_common>
+      <extra>
+        <technique profile="OpenCOLLADA3dsMax">
+          <max_light>
+            <affect_diffuse>1</affect_diffuse>
+            <affect_specular>1</affect_specular>
+            <attenuation_far_end>200</attenuation_far_end>
+            <attenuation_far_start>80</attenuation_far_start>
+            <attenuation_near_end>40</attenuation_near_end>
+            <attenuation_near_start>0</attenuation_near_start>
+            <decay_radius>40</decay_radius>
+            <decay_type>0</decay_type>
+            <multiplier>1</multiplier>
+            <overshoot>1</overshoot>
+            <use_far_attenuation>0</use_far_attenuation>
+            <use_near_attenuation>0</use_near_attenuation>
+          </max_light>
+        </technique>
+      </extra>
+    </light>
+  </library_lights>
+  <library_images>
+    <image id="Grid_Ambient_jpg">
+      <init_from>./maps/Grid_Ambient.jpg</init_from>
+    </image>
+    <image id="Grid_Diffuse_jpg">
+      <init_from>./maps/Grid_Diffuse.jpg</init_from>
+    </image>
+  </library_images>
+  <library_visual_scenes>
+    <visual_scene id="MaxScene">
+      <node name="EnvironmentAmbientLight">
+        <instance_light url="#EnvironmentAmbientLight"/>
+      </node>
+      <node id="node-Plane001" name="Plane001">
+        <translate>0 75 0</translate>
+        <rotate>-1 0 0 -90</rotate>
+        <instance_geometry url="#geom-Plane001">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="_4_-_Default_1" target="#_4_-_Default-material">
+                <bind_vertex_input semantic="CHANNEL1" input_semantic="TEXCOORD" input_set="0"/>
+                <bind_vertex_input semantic="CHANNEL1" input_semantic="TEXCOORD" input_set="0"/>
+              </instance_material>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+        <extra>
+          <technique profile="OpenCOLLADA">
+            <cast_shadows>1</cast_shadows>
+            <primary_visibility>1</primary_visibility>
+            <receive_shadows>1</receive_shadows>
+            <secondary_visibility>1</secondary_visibility>
+          </technique>
+        </extra>
+      </node>
+      <node id="node-Direct001" name="Direct001">
+        <matrix>1.144847 4.58807e-12 -4.37114e-8 -1.70812e-6 -5.00428e-8 1.04963e-4 -1 -39.07732 0 1.144847 9.16828e-5 -0.2392263 0 0 0 1</matrix>
+        <instance_light url="#Direct001-light"/>
+        <extra>
+          <technique profile="OpenCOLLADA">
+            <cast_shadows>1</cast_shadows>
+            <primary_visibility>1</primary_visibility>
+            <receive_shadows>1</receive_shadows>
+            <secondary_visibility>1</secondary_visibility>
+          </technique>
+        </extra>
+      </node>
+      <node id="node-Direct001.Target" name="Direct001.Target">
+        <translate>4.44917e-6 101.7851 -0.252141</translate>
+        <rotate>-0.5773502 0.5773503 0.5773503 -120</rotate>
+        <rotate>1.12369e-7 -1.22042e-7 1 -45</rotate>
+        <scale>1.144847 1.144847 1</scale>
+        <rotate>1.12369e-7 -1.22042e-7 1 45</rotate>
+        <extra>
+          <technique profile="OpenCOLLADA">
+            <cast_shadows>1</cast_shadows>
+            <primary_visibility>1</primary_visibility>
+            <receive_shadows>1</receive_shadows>
+            <secondary_visibility>1</secondary_visibility>
+          </technique>
+        </extra>
+      </node>
+      <node id="node-Camera001" name="Camera001">
+        <matrix>1 0 0 9.05991e-6 0 -9.8384e-4 -0.9999995 -74.54057 0 0.9999995 -9.8384e-4 0 0 0 0 1</matrix>
+        <instance_camera url="#Camera001-camera"/>
+        <extra>
+          <technique profile="OpenCOLLADA">
+            <cast_shadows>1</cast_shadows>
+            <primary_visibility>1</primary_visibility>
+            <receive_shadows>1</receive_shadows>
+            <secondary_visibility>1</secondary_visibility>
+          </technique>
+        </extra>
+      </node>
+      <node id="node-Camera001.Target" name="Camera001.Target">
+        <translate>9.05991e-6 76.24703 0.148351</translate>
+        <rotate>-0.5773502 0.5773503 0.5773503 -120</rotate>
+        <extra>
+          <technique profile="OpenCOLLADA">
+            <cast_shadows>1</cast_shadows>
+            <primary_visibility>1</primary_visibility>
+            <receive_shadows>1</receive_shadows>
+            <secondary_visibility>1</secondary_visibility>
+          </technique>
+        </extra>
+      </node>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_visual_scene url="#MaxScene"/>
+  </scene>
+</COLLADA>

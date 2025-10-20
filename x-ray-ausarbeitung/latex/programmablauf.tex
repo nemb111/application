@@ -1,0 +1,49 @@
+\section{Programmablauf}
+
+In diesem Kapitel soll eine Übersicht über den Ablauf des Programms verschafft werden. Der grobe Ablauf, vom Start des Programms bis zur Erzeugung des eigentlichen Bildes lässt sich aus Abbildung~\ref{fig_Programmablaufplan} entnehmen. Im Text werden dann die einzelnen Bereiche der Abbildung detaillierter erläutert.\\
+
+Der Raytracer wird über eine Kommandozeile oder aus einer IDE wie "`Microsoft Visual Studio"' gestartet. Dabei können dem Programm die Optionen aus Tabelle~\ref{tab_Optionen} mitgegeben werden. Wenn keine Optionen angegeben werden benutzt der Raytracer die Standardkonfiguration.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Tabelle%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table}[h]
+    \begin{tabular}{|c|c|p{8cm}|}
+    \hline 
+    \textbf{Argument} & \textbf{Standardwert} & \textbf{Bedeutung} \\ 
+    \hline 
+    $--$ncores $<$int$>$ & 1 & Legt die Anzahl der Verwendeten Threads fest (sollte der Anzahl 
+    an CPU-    Cores entsprechen) \\ 
+    \hline 
+     $--$outfile $<$string$>$ & "`out.ppm"' & Legt Ausgabeverzeichnis und Name des gerenderten 
+     Bildes fest     \\ 
+    \hline 
+    $--$verbose $<$int$>$ & 1 & Legt das Ausgabe-Level des Logger fest \\ 
+    \hline 
+    $--$window $<$bool$>$ & false & Zeige das Bild direkt nach dem Rendern in einem externen Fenster \\ 
+    \hline 
+    $--$help & $-$ & Zeigt den Hilfetext an \\
+    \hline
+    \end{tabular}
+    \caption{Kommandozeilenoptionen}
+    \label{tab_Optionen}
+\end{table}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Im nächsten Schritt wird in der Parser-Klasse eine "`World"' erzeugt. Ihre Membervariablen bestehen aus
+Zeigern auf abstrakte Basisklassen. Dies sind unter anderem die "`Renderer-"', "`Camera"', "`Film-"', "`Sampler-"', "`Shape"' und "`Light-"'Klasse.
+Diese Basisklassen können selbst nicht instanziert werden und dienen als Interface um sicherzustellen, dass bestimmte Basisfunktionalitäten von den abgeleiteten Klassen bereitgestellt werden. Die Parser-Klasse kann also nur Instanzen von Klassen erzeugen, die von diesen Basisklassen erbt. Diese Vorgehensweise soll eine relativ einfache Integration von neuen Funktionen und Techniken ermöglichen. So implementiert man beispielsweise eine orthographische Kamera und eine perspektivische Lochkamera. Will man nun zwischen den beiden Kameras wechseln so muss man nur eine Instanz des gewünschten Typs erstellen und deren Zeiger an die "`World"' übergeben.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Abbildung%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[h!]
+	\centering
+  \includegraphics[width=\textwidth]{images/Programmablaufplan.pdf}
+	\caption{Programmablaufplan}
+	\label{fig_Programmablaufplan}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Besonderer Wert wurde auch darauf gelegt das Design so zu wählen, dass sich die Aufgaben gut parallelisieren lassen. Die heutige Zeit ist geprägt von Multicore-CPU's; die rein sequentielle Ausführung von Programmen lässt also Rechenpotential dieser CPU's brach liegen. Auf der anderen Seite fällt das "`debuggen"' von parallelisierten Programmen deutlich schwerer als von sequentiellen. Es wäre also wünschenswert per Knopfdruck zwischen sequentieller und paralleler Programmausführung umschalten zu können. Um dies zu realisieren werden mehrere Arbeitspakete (in Abbildung~\ref{fig_Programmablaufplan} auch Tasks genannt) angefertigt und auf einen Stack gelegt. Erzeugt werden diese, indem einem "`Sampler"' die benötigte Anzahl an Tasks mitgeteilt wird und dieser entsprechende "`SubSampler"' erzeugt. Jeder dieser "`SubSampler"' beschränkt sich auf einen anderen Pixelbereich des zu "`rendernden"' Bildes, so dass es nicht zu Überschneidungen kommt. Anschließend wird die gewünschte Anzahl an Threads erzeugt, die sich mit "`SubSampler"' aus dem Stack versorgen, bis dieser leer ist. Damit ist auch möglich nur einen einzelnen Thread zu erzeugen und somit eine sequentielle Abarbeitung des Programms zu erzeugen\\
+
+Die einzelnen Threads arbeiten somit auf exakt der selben "`World"' und nutzen entsprechend den gleichen "`Renderer"'. Sie unterscheiden sich lediglich in Ihren "`Samplern"'. Deshalb ist es wichtig für eine globale "`Preprocessing"' Phase zu sorgen bevor die Threads mit ihrer Arbeit beginnen. Einerseits damit die einzelnen Threads diese Aufgabe nicht redundant durchführen müssen auf der anderen Seite kann es für bestimmte Berechnungen notwendig sein die komplette Szene zu betrachten. Dies zeigt sich z.b. auch für die "`Postprocessing"' Phase am Beispiel von Rekonstruktionsfiltern. Diese Filter dienen zur Verbesserung der Bildqualität und benötigen zur Korrektur eines einzelnen Pixels Informationen aus benachbarten Pixeln.

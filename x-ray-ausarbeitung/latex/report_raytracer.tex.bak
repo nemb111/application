@@ -1,0 +1,107 @@
+\documentclass[10pt,a4paper]{scrreprt}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{todonotes}
+\usepackage{hyperref} %das muss zu letzt geladen werden
+
+\pagestyle{headings}
+
+
+
+
+%% Hier beginnt das eigentliche Dokument
+\begin{document}
+
+\begin{titlepage}
+
+
+\title{Implementation of a raytracer
+\begin{center}
+   \includegraphics[width=\textwidth]{./titelbild.png}
+\end{center}
+      }
+\subtitle{Masterprojekt WS 12/13}
+\author{Benedikt Mendorf}
+\date{\today}
+
+\publishers{
+    \begin{tabbing}
+    Betreuer: \= Prof. Dr.-Ing. Matthias Teschner\\
+              \> Computer Graphics\\
+              \> Albert-Ludwigs-Universität\\
+    \end{tabbing}        
+}
+
+\end{titlepage}
+
+\maketitle
+
+
+
+
+
+
+
+
+
+\tableofcontents
+
+
+%bjaljljgl \cite{jensen2001ReaImaSynUsiPhoMap}\cite{suffern2007ray}
+
+\include{./test/einleitung}
+%\include{zielsetzung.tex}
+%\include{szenegenerierung.tex}
+%\include{programmablauf}
+%\include{linalg}
+%\include{homogenekoord}
+%\include{rayobjektschnitte}
+%\include{transformationen}
+%\include{sampling}
+%%\include{filter}
+%\include{accelerator}
+%\include{renderingequation}
+%%\include{brdfandmaterial}
+%%\include{arealights}
+%%\include{transparency}
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Abbildung%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\begin{figure}[h]
+%	\centering
+%  \includegraphics[width=\textwidth]{images/bunny.pdf}
+%	\caption{Vereinfachtes Modell des Stanford Bunny. Gerendert mit Flat-Shading}
+%	\label{fig_bunny}
+%\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Abbildung%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\begin{figure}[h]
+%	\centering
+%  \includegraphics[width=\textwidth]{images/scene2.pdf}
+%	\caption{Zwei Punktlichter beleuchten die Szene. Die Kugel besitzt ein Material, welches
+%	das Phong-Beleuchtungsmodell benutzt.}
+%	\label{fig_ADPRender}
+%\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\bibliographystyle{alphadin}
+\bibliography{./bibtex/literatur}
+\listoffigures
+
+
+\end{document}
+
+
+
+
+
+

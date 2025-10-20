@@ -1,0 +1,135 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include <Windows.h>
+#include "resource.h"
+/////////////////////////////////////////////////////////////////////////////
+// Deutsch (Deutschland) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_DEU)
+LANGUAGE LANG_GERMAN, SUBLANG_GERMAN
+#pragma code_page(1252)
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MENU1 MENU
+BEGIN
+    POPUP "Datei"
+    BEGIN
+        MENUITEM "Starte      F11",             ID_FILE_RUN
+        MENUITEM "Speichern   Strg+S",          ID_FILE_SAVE
+        MENUITEM SEPARATOR
+        MENUITEM "Beenden     Esc",             ID_FILE_EXIT
+    END
+    POPUP "Fenster"
+    BEGIN
+        MENUITEM "Anpassen    F12",             ID_WINDOW_FIT
+    END
+    MENUITEM "Auflösung",                   ID_AUFL40001
+    MENUITEM "Speichern + Abbruch",         ID_FILE_SAVE
+END
+
+IDR_MENU2 MENU
+BEGIN
+    POPUP "File"
+    BEGIN
+        MENUITEM "Run         F11",             ID_FILE_RUN
+        MENUITEM "Save        Ctrl+S",          ID_FILE_SAVE
+        MENUITEM SEPARATOR
+        MENUITEM "Exit         Esc",            ID_FILE_EXIT
+    END
+    POPUP "Window"
+    BEGIN
+        MENUITEM "Fit         F12",             ID_WINDOW_FIT
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+ID_ICON                 ICON                    "Icon.ico"
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_DIALOG3 DIALOGEX 0, 0, 131, 73
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Dialog"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,11,56,50,14
+    PUSHBUTTON      "Abbrechen",IDCANCEL,76,56,50,14
+    EDITTEXT        IDC_EDIT1,49,16,49,12,ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_EDIT2,49,35,49,12,ES_AUTOHSCROLL | ES_NUMBER
+    LTEXT           "Breite:",IDC_STATIC,17,18,26,8
+    LTEXT           "Höhe:",IDC_STATIC,17,37,26,8
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO
+BEGIN
+    IDD_DIALOG3, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 127
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 70
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+#endif    // Deutsch (Deutschland) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

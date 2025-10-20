@@ -1,0 +1,129 @@
+
+\chapter{Homogene Koordinaten}\label{cha:hom_koord}
+
+Der erste Schritt auf dem Weg zum funktionsfähigen "`Raytracer"' besteht darin Objekte im dreidimensionalen Raum darstellen zu können. In der Computergrafik haben sich dafür die homogenen Koordinaten etabliert. Wie bei den inhomogenen Koordinaten existieren auch hier Spaltenvektoren. Jedoch bestehen diese aus vier anstatt drei Komponenten. Diese vierte Komponente scheint zu Beginn unnütz, da sich die Position von Punkten und Objekten ebenso mit nur drei Komponenten eindeutig beschreiben lässt. Jedoch sorgt diese zusätzliche Komponente dafür, dass sich Transformationen auf eine einheitlich Art und Weise und zwar durch Multiplikation mit einer Transformationsmatrix durchführen lassen.
+
+
+\section{Vektoren, Punkte und Normalen}
+
+Neben der Vereinheitlichung von Transformationen bietet die zusätzliche Komponente, die ab jetzt mit \( w \) identifiziert wird, den weiteren Vorteil, dass explizit zwischen Punkten und Vektoren unterschieden werden kann.
+
+Bei Vektoren ist \( w = 0 \). Sie dienen der reinen Richtungsangabe und bleiben deshalb bei Translation unverändert. Bei Punkten ist \( w \ne 0 \). Sie sind mathematisch gesehen Ortsvektoren und werden durch Translation verschoben. Die Notation ist wie folgt:
+
+
+
+\begin{equation*}
+\text{Vektor:} \quad \vv{v} = \begin{pmatrix}
+ x \\ y \\ z \\ 0
+\end{pmatrix}
+\qquad
+\text{Punkt:} \quad \boldsymbol{p} = \begin{pmatrix}
+x \\ y \\ z \\ w \ne 0
+\end{pmatrix}
+\qquad
+\text{Normale:} \quad \vv{n} = \begin{pmatrix}
+x \\ y \\ z \\ 0
+\end{pmatrix}
+\end{equation*}
+Die Einträge \(x, y, z\) beziehen sich wie gewohnt auf die Koordinatenachsen eines dreidimensionalen kartesischen Koordinatensystems. Die Komponente \(w\) dient als Skalierungsfaktor. Die Länge eines Vektors \( |\vv{v}| \) und Punktes \( |\boldsymbol{p}| \) ist somit gegeben durch:
+\begin{equation*}
+|\vv{v}| = \sqrt{x^2+y^2+z^2} \quad \quad \quad \quad
+|\boldsymbol{p}| = \sqrt{\left(\frac{x}{w} \right)^2
+                         + \left(\frac{y}{w}\right)^2 
+                         + \left(\frac{z}{w}\right)^2
+                        }
+\end{equation*}
+Eine Normale ist einem Vektor sehr ähnlich. Sie steht jedoch immer orthogonal auf der Oberfläche eines Objekts. Zusätzlich handelt es sich bei einer Normalen um einen Einheitsvektor, d.h. es gilt \( |\vv{n}| = 1 \).
+
+
+\section{Matrizen}
+
+Die Aufgabe von Matrizen besteht beim "`raytracing"' hauptsächlich darin Punkte und Objekte zu transformieren. Durch die Verwendung von homogenen Koordinaten handelt es dabei um \( 4 \times 4  \)-Matrizen. Sie werden durch einen fett geschriebenen Großbuchstaben gekennzeichnet.
+
+Um Objekte entlang eines beliebigen Vektors \( \vv{a} \) zu verschieben verwendet man eine Translationsmatrix \( \boldsymbol{T} \),
+
+\begin{equation}
+    \boldsymbol{T}( \vv{a} ) = 
+    \begin{bmatrix}
+        1 & 0 & 0 & a_x \\
+        0 & 1 & 0 & a_y \\
+        0 & 0 & 1 & a_z \\
+        0 & 0 & 0 & 1
+    \end{bmatrix}
+\end{equation}
+
+wobei \( a_x, a_y, a_z \) die Komponenten des Vektors \( \vv{a} \) im Bezug auf das zugrunde liegende Koordinatensystem sind.
+
+Rotation um die Achsen des globalen Koordinatensystems erreicht man durch die Rotationsmatrizen,
+
+\begin{align*}
+    \boldsymbol{R_x}(\theta) &= 
+    \begin{bmatrix}
+        1 & 0 & 0 & 0 \\
+        0 & \cos \theta & - \sin \theta & 0 \\
+        0 & \sin \theta & \cos \theta & 0 \\
+        0 & 0 & 0 & 1
+    \end{bmatrix}, \quad
+    \boldsymbol{R_y}(\theta) = 
+    \begin{bmatrix}
+        \cos \theta & 0 & \sin \theta & 0 \\
+        0 & 1 & 0 & 0 \\
+        - \sin \theta & 0 & \cos \theta & 0 \\
+        0 & 0 & 0 & 1
+    \end{bmatrix}, \\
+    \boldsymbol{R_z}(\theta) &= 
+    \begin{bmatrix}
+        \cos \theta & - \sin \theta & 0 & 0 \\
+        \sin \theta & \cos \theta & 0 & 0 \\
+        0 & 0 & 1 & 0 \\
+        0 & 0 & 0 & 1
+    \end{bmatrix}
+\end{align*}
+
+wobei jeweils um die \( x, y \text{ und } z \) Achse um den Winkel \( \theta \) (im Bogenmaß) im mathematisch positiven Sinn (also gegen den Uhrzeigersinn) gedreht wird.
+
+Soll ein Punkt an den Achsen des zugrunde liegenden Koordinatensystems gespiegelt werden, so verwendet man Reflexionsmatrizen der Form,
+
+\begin{align*}
+    \boldsymbol{S_x} = 
+    \begin{bmatrix}
+        -1 & 0 & 0 & 0 \\
+        0 & 1 & 0 & 0 \\
+        0 & 0 & 1 & 0 \\
+        0 & 0 & 0 & 1 \\        
+    \end{bmatrix}, \quad
+    \boldsymbol{S_y} = 
+    \begin{bmatrix}
+        1 & 0 & 0 & 0 \\
+        0 & -1 & 0 & 0 \\
+        0 & 0 & 1 & 0 \\
+        0 & 0 & 0 & 1
+    \end{bmatrix}, \quad
+    \boldsymbol{S_z} =
+    \begin{bmatrix}
+        1 & 0 & 0 & 0 \\
+        0 & 1 & 0 & 0 \\
+        0 & 0 & -1 & 0 \\
+        0 & 0 & 0 & 1
+    \end{bmatrix}
+\end{align*}
+
+wobei \( \boldsymbol{S_x} \) an der x-Achse und die beiden anderen Matrizen entsprechen an der y-Achse und der z-Achse spiegeln.
+
+Um Objekte entlang der Achsen auszudehnen oder zu kontrahieren verwendet man eine Skalierungsmatrix,
+
+\begin{equation*}
+    \boldsymbol{S}(s_x, s_y, s_z) =
+    \begin{bmatrix}
+        s_x & 0 & 0 & 0 \\
+        0 & s_y & 0 & 0 \\
+        0 & 0 & s_z & 0 \\
+        0 & 0 & 0 & 1
+    \end{bmatrix}
+\end{equation*}
+
+wobei \( s_x, s_y \text{ und } s_z\) Faktoren sind, um die das Objekt entlang der Achsen skaliert wird.
+
+
+
+
